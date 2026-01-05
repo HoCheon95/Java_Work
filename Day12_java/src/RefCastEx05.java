@@ -1,0 +1,58 @@
+/*
+ * instanceof 형변환(레퍼런스간의 업캐스팅과 다운캐스팅) 유무 판단 연산자
+ */
+
+class HandPhone06 extends Object{
+	protected String model;//폰모델명
+	protected String number;//폰번호
+	
+	public HandPhone06() {}//기본 생성자
+	
+	public HandPhone06(String model, String number) {
+		this.model = model;
+		this.number = number;
+	}// 매개변수 개수가 다른 생성자 오버로딩
+	
+}
+
+class DicaPhone06 extends HandPhone06{
+	protected String pixel; // 화소수
+	
+	public DicaPhone06() {}
+	
+	public DicaPhone06(String model, String number, String pixel) {
+		super(model, number);
+		this.pixel = pixel;
+	}
+	
+	public void printDicaPhone() {
+		System.out.println("폰모델 : " + model + ", 폰번호 : " + number + ", 화소수 : " + pixel);
+	}// 사용자 정의 메서드
+}// DicaPhone06 자손클래스
+public class RefCastEx05 {
+
+	public static void main(String[] args) {
+		
+		DicaPhone06 dp = new DicaPhone06("아이폰", "010-7777-7777","2056");//매개변수 3개짜리 자손의 오버로딩 된 생성자 호출
+		dp.printDicaPhone();
+		
+		if(dp instanceof HandPhone06) {//dp는 HandPhone06 부모타입으로 업캐스팅이 가능한가?참
+			HandPhone06 hp = dp;//업캐스팅
+			System.out.println("업캐스팅이 가능합니다.");
+		}else {
+			System.out.println("업캐스팅이 불가능 합니다.");
+		}//if else
+		
+		System.out.println("\n =================================> \n");
+		
+		HandPhone06 hp = new HandPhone06(); //사전에 업캐스팅을 안함
+		if(hp instanceof DicaPhone06) {// hp는 자손타입으로 다운캐스팅이 가능한가? 거짓
+			DicaPhone06 dp05 = (DicaPhone06)hp;//명시적인 다운캐스팅 -> 사전에 업캐스팅을 하지 않아서 캐스팅 연산 예외오류가 난다.
+			System.out.println("다운캐스팅이 가능합니다.");
+		}else {
+			System.out.println("사전에 업캐스팅을 하지 않아서 명시적인 다운캐스팅 불가능 합니다.");
+		}//if else
+
+	}
+
+}

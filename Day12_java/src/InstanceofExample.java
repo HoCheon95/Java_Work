@@ -1,0 +1,26 @@
+/*
+ * instanceof 의 자동타입변환 -> instanceof 패턴 매칭
+ */
+public class InstanceofExample {
+	public static void personInfo(Person person) {
+		System.out.println("학생명 : " + person.name);
+		
+		if(person instanceof Student student) {// person이 참조하는 객체가 Student 자손타입이라면 자동 타입 변환 ->
+			                                   // 명시적인 다운캐스팅 코드가 필요 없다.(person이 Student 자손타입으로)
+			                                   // 다운캐스팅이 가능한가? 참
+			System.out.println("학번 : " + student.studentNo);
+			student.study();
+			
+		}
+	}
+	public static void main(String[] args) {
+		
+		Person p01 = new Person("홍길동");
+		personInfo(p01);
+		
+		Student st01 = new Student("이순신", 20260102);
+		personInfo(st01);// 정적메서드 호출하면서 Person person = st01;이 된다.
+
+	}
+
+}

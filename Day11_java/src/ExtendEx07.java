@@ -1,0 +1,51 @@
+/*
+ * 상속에서 부모클래스의 생성자가 오버로딩이 되면 부모의 기본생성자를 묵시적 제공을 하지 않는다. 그러다 보니
+ * 자손에서 부모의 묵시적으로 제공하지 않는 기본생성자를 호출할려다가 에러가 발생한다. 이를 해결하는 합리적 방법)
+ * 	1. 부모의 기본생성자를 명시적 코드를 한다.
+ * 	2. 자손에서 부모의 오버로딩 된 생성자를 호출하면 된다. 이것이 가장 합리적 해결법이다.
+ */
+class Parent07 {
+	protected int a = 10;
+	protected int b = 20;
+
+	// public Parent07(){} // 기본생성자 명시적 코드
+
+	public Parent07(int a, int b) {
+		// super();가 생략
+		this.a = a;
+		this.b = b;
+	}
+
+}
+
+class Child07 extends Parent07 {
+	protected int c = 30;
+
+	public Child07() {
+		super(100, 200); // 부모클래스 오버로딩 된 생성자 호출
+		this.c = 300;
+	}
+	
+	public Child07(int a, int b, int c) {
+		super(a,b);
+		this.c=c;
+	}// 매개변수 개수가 다른 자손의 생성자 오버로딩
+	
+	public void print() {
+		System.out.println("a = " + a + ", b = " + b + ", C = " + c);
+	}
+}
+
+public class ExtendEx07 {
+
+	public static void main(String[] args) {
+		
+		Child07 child01 = new Child07();	//자손의 기본생성자 호출
+		child01.print(); // 100, 200, 300
+		
+		Child07 child02 = new Child07(1000, 2000, 3000);	// 자손의 매개변수 3개짜리 오버로딩 된 생성자 호출
+		child02.print(); // 1000, 2000, 3000
+
+	}
+
+}
