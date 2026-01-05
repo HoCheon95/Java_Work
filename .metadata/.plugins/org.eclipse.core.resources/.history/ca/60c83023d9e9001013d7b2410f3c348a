@@ -1,0 +1,20 @@
+import net.daum.model01.ShapeClass;
+import net.daum.model02.Circ;
+import net.daum.model02.Rect;
+import net.daum.model02.Tria;
+
+public class AbsEx06 {
+
+	public static void main(String[] args) {
+		
+		ShapeClass[] arr = new ShapeClass[3];//배열크기가 3인 arr 객체 배열 생성
+		arr[0] = new Circ();//업캐스팅
+		arr[1] = new Rect();
+		arr[2] = new Tria();
+		
+		for(int i =0; i<arr.length; i++) {
+			
+		}
+	}
+
+}

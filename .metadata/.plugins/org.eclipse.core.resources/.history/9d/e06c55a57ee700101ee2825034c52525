@@ -1,0 +1,36 @@
+/*
+ * 1. 부모와 자손에서 동일한 멤버변수명이 정의된 경우에 호출되는 변수 결정은 참조변수 타입에 의해서 결정된다.
+ * 2. 업캐스팅 이후 오버라이딩 한 메서드 호출은 참조변수가 실제 가리키는 객체 타입에 의해서 결정된다.
+ */
+
+class Mother08{
+	int x = 100;
+	
+	void m08() {
+		System.out.println("부모클래스 메서드 m08()");
+	}
+}
+
+class Child08 extends Mother08{
+	int x = 200; //부모와 동일 멤버변수명 정의
+
+	@Override
+	void m08() {
+		System.out.println("오버라이딩 한 메서드 m08()");
+	}
+	
+}
+public class RefCastEx08 {
+
+	public static void main(String[] args) {
+		
+		Mother08 m = new Child08();// 업캐스팅
+		
+		System.out.println("m.x = " + m.x); // 100 -> 부모와 자손에서 동일한 멤버변수명이 정의된 경우에는
+		                                    // 호출되는 멤버변수 결정은 참조변수 m 타입에 의해서 결정된다. 여기에서 부모타입인
+		                                    // Mother08이기 때문에 부모에서 정의된 동일 멤버변수명이 호출된다.
+		m.m08();// 업캐스팅 이후 오버라이딩 한 메서드 호출
+
+	}
+
+}

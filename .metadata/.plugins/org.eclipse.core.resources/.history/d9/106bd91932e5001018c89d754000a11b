@@ -1,0 +1,10 @@
+class Poing2D extends Object{ // extends Object은 묵시적 생략 가능
+	
+}
+public class ExtendEx02 {
+
+	public static void main(String[] args) {
+
+	}
+
+}

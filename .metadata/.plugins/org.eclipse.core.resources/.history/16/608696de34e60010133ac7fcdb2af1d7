@@ -1,0 +1,35 @@
+
+class Animal{
+	
+	//모든 동물들이 공통으로 가지는 행동
+	void sound() {
+		System.out.println("동물이 소리는 낸다.");
+	}
+}
+
+class Dog extends Animal{
+
+	void sound() {
+		System.out.println("멍멍");
+	}
+	
+}
+
+class Cat extends Animal{
+
+	void sound() {
+		System.out.println("야옹");
+	}
+	
+}
+
+public class practice {
+	public static void main(String[] args) {
+		Animal a1 = new Dog();
+		Animal a2 = new Cat();
+		Animal a3 = new Animal();
+		a3.sound();
+		a1.sound();
+		a2.sound();
+	}
+}

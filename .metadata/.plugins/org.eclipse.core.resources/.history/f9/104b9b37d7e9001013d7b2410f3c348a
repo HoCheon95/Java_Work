@@ -1,0 +1,18 @@
+import net.daum.model02.Circ;
+import net.daum.model02.Tria;
+import net.daum.model02.Rect;
+
+
+public class AbsEx05 {
+
+	public static void main(String[] args) {
+		
+		Circ c = new Circ();
+		Rect r = new Rect();
+		Tria t = new Tria();
+		
+			
+
+	}
+
+}

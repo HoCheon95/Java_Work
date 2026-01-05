@@ -1,0 +1,13 @@
+class Test {
+
+    void hello() {
+        System.out.println("안녕하세요");
+    }
+}
+
+public class practice {
+    public static void main(String[] args) {
+    	Test t = new Test();
+        t.hello();   // 객체 생성 없이 호출
+    }
+}

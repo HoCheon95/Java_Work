@@ -1,0 +1,35 @@
+/*
+ * 레퍼런스간의 형변환 중 하나인 다운캐스팅을 할 때 사전에 업캐스팅을 하지 않고 명시적인 다운캐스팅을 하면
+ * javac 컴파일 명령어에 의해서 정상적인 컴파일은 되지만 컴파일 된 바이트 코드 클래스 파일을 java 명령어 에 의해서
+ * 실행시 캐스팅 연산 예외 오류를 발생시킨다. 그래서 나온 것이 instanceof 연산자이다.
+ */
+
+class Mother04 extends Object{// extends Object 은 생략 가능
+	void m04() {
+		System.out.println("부모클래스 메서드 m04()");
+	}	
+}
+
+class Child04 extends Mother04{
+	void ch04() {
+		System.out.println("첫번째 자손클래스 메서드 ch04()");
+	}
+}// 첫번째 자손클래스
+
+class Child05 extends Mother04{
+	void ch05() {
+		System.out.println("두번째 자손클래스 메서드 ch05()");
+	}
+}// 두번째 자손클래스
+
+public class RefCast04 {
+
+	public static void main(String[] args) {
+		
+		Mother04 m04 = new Mother04(); //사전에 업캐스팅을 안함
+		Child04 ch01 = (Child04)m04;// 명시적인 다운캐스팅을 함 -> 하지만 사전에 업캐스팅을 하지 않아서 
+		                            // 컴파일된 클래스를 실행시 캐스팅 연산 예외 오류가 발생
+
+	}
+
+}

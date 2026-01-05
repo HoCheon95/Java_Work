@@ -1,0 +1,61 @@
+/*
+ * 메서드 오버라이딩과 오버로딩의 차이점)
+ * 1. 오버러딩 이란?
+ *  상속과 관련이 없다. 동일한 같은 클래스내에서 같은 이름의 메서드명을 중복해서 여러번 정의하는 것을 말한다.
+ */
+public class ExtendEx03 {
+
+	public static void main(String[] args) {
+
+	}
+
+}
+
+
+
+
+
+
+package Day_11;
+//메서드 오버라이딩과 오버로딩의 차이점)
+//1. 오버로딩 ?
+//    상속과 관련이 없다. 동일한 같은 클래스내에서 같은 이름의 메서드명을 중복해서 여러번 정의하는 것을 말한다.
+//2. 오버라이딩 ?
+//    - 오버라이딩을 하기 위해서 사전에 반드시 상속관계를 만들어야한다.
+//    - 상속관계에서 부모의 메서드명, 메서드 리턴타입, 매개변수 타입과 개수 모두 동일한 원형을 자손에서 상속받은 상태에서
+//    - 자손에 맞게 {} 중괄호 내의 본문 실행문장을 변경 수정하는 것을 메서드 오버라이딩이라고 한다.
+
+//   주의할 것은 생성자는 상속되지 않는다. 그러므로 생성자 오버로딩 문법은 존재하지만 오버라이딩 문법은 없다.
+
+//3. 상속관계에서 자손에서 부모의 메서드를 호출할 때는 super.메서드();를 사용
+
+class Parent03{
+ public void parent03() {
+     System.out.println("부모클래스 메서드 parent03()");
+ }
+}//부모클래스
+
+class Child03 extends Parent03{
+ public void child03() {
+     System.out.println("자손클래스 메서드 child03()");
+ }
+
+ @Override   // 부모클래스 parent03 메서드 호출 (alt ins overriding)
+ public void parent03() {
+     super.parent03();
+     System.out.println("오버라이딩 한 메서드 parent03()");
+ }
+}//자손클래스
+
+public class ExtendEx03 {
+ public static void main(String[] args) {
+
+     Child03 child03 = new Child03();
+     child03.child03();  // 자손에서 정의된 메서드 호출
+     child03.parent03(); // 오버라이딩 메서드 호출
+
+     Parent03 p = new Parent03();
+     p.parent03();   // 부모에서 정의된 메서드 호출
+     //p.child03();  // 부모클래스 객체로 자손에서 정의된 메서드 호출 불가
+ }
+}

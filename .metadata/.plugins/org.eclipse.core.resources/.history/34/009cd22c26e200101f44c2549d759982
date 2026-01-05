@@ -1,0 +1,27 @@
+import java.util.Arrays;
+
+class pra2 {
+
+	public int solution(String my_string) {
+        int answer = 0;
+        
+        my_string = my_string.replaceAll("[a-z]", "");
+        my_string = my_string.replaceAll("[A-Z]", "");
+        
+        for(int i = 0; i < my_string.length(); i++) {	
+        	answer += (int)my_string.charAt(i);
+        	System.out.println(my_string);
+        }
+        
+        return answer;
+    }
+
+	public static void main(String[] args) {
+
+		pra2 p = new pra2();
+
+		System.out.println(p.solution("aAb1B2cC34oOp"));
+
+	}
+
+}

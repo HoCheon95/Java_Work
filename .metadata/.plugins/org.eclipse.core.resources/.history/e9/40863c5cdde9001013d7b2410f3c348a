@@ -1,0 +1,11 @@
+/*
+ * 매개변수 다형성 문법)
+ * 
+ */
+public class AbsEx07 {
+
+	public static void main(String[] args) {
+
+	}
+
+}

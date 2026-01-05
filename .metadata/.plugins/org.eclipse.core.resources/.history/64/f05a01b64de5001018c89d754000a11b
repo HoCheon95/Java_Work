@@ -1,0 +1,43 @@
+/* 16장.상속.pdf No.20쪽 1번문제)
+ *  강의 교안 소스 중에서 접근 권한이 잘못된 번호를 기술하고, 보다 더 좋은 OOP(객체지향 프로그래밍) 자바 코드로
+ *  변경해 본다.(불필요한 코드 제거)
+ * 
+ */
+class Parent {
+	private int a; // 같은 클래스에서만 사용가능한 멤버변수
+	int b;
+	protected int c;
+	public int d;
+	
+}
+
+class Child extends Parent {
+	int a;
+
+	public Child(int a, int b, int c, int d) {
+		this.a = a; // [1]	
+		this.b = b; // [2]
+		this.c = c; // [3]
+		this.d = d; // [4]
+	}
+
+	void func() {
+		System.out.println(a); // [5]
+		System.out.println(b); // [6]
+		System.out.println(c); // [7]
+		System.out.println(d); // [8]
+	}
+}
+
+public class Ex16_2 {
+
+	public static void main(String[] args) {
+		Child one = new Child(1, 2, 3, 4);
+		one.func();
+		System.out.println(one.a); // [9]
+		System.out.println(one.b); // [10]
+		System.out.println(one.c); // [11]
+		System.out.println(one.d); // [12]
+	}
+
+}

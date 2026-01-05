@@ -1,0 +1,62 @@
+/* 16장.상속.pdf No.23쪽 3번문제)
+ * 문제는 강의교안 참고한다. 추가적인 문제는 부모클래스 메서드내에서 if~else문 대신 if문만 사용해도 된다.
+ * 부모클래스 각 메서드내의 실행문장으로 '소녀는 사람이다', '사람은 2발로 걷는다'로 처리하고 Dog동물 자손클래스에서
+ * 부모클래스 각 메서드를 오버라이딩을 한다음 실행문장으로 if문만 사용해서 '강아지는 동물이다', '강아지는 4발로 걷는다.'가
+ * 출력되는 자바코드를 완성해 본다.
+ */
+
+class Animal{
+	protected String kind;
+	protected int leg;
+	
+	public Animal(String kind, int leg) {
+		this.kind = kind;
+		this.leg = leg; // 생성자의 주된 기능인 인스턴스 변수 초기화
+	}// 매개변수 2개까지 오버로딩 생성자
+	
+	public void getKind() {
+		if(kind.equals("소녀")) {
+			System.out.println(kind + "는 사람이다.");
+		}
+	}// 어떤 동물인지 알려주는 메서드
+	
+	public void walk() {
+		if(leg == 2) {
+			System.out.println(kind + "는 " + leg + "발로 걷는다.");
+		}
+
+	}// 어떻게 걷는지 알려주는 메서드
+}// Animal 부모클래스
+
+class Dog extends Animal{
+	public Dog(String kind, int leg) {
+		super(kind, leg); // 부모클래스 오버로딩된 생성자 호출
+	}
+	
+	public void getKind() {
+		if(kind.equals("강아지")) {
+			System.out.println(kind + "는 동물이다.");
+		}
+	}
+}// Dog 자손클래스
+
+class Human extends Animal{
+	public Human(String kind, int leg) {
+		super(kind,leg); // 부모클래스 오버로딩된 생성자 호출
+	}
+}// Human 자손클래스
+
+public class Ex16_4 {
+
+	public static void main(String[] args) {
+		Dog d = new Dog("강아지", 4);
+		Human h = new Human("소녀",2);
+		
+		d.getKind();
+		d.walk();
+		h.getKind();
+		h.walk();
+
+	}
+
+}

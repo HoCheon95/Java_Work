@@ -1,0 +1,12 @@
+/*
+ * instanceof 의 자동타입변환 -> instanceof 패턴 매칭
+ */
+public class InstanceofExample {
+	public static void personInfo(Person person) {
+		
+	}
+	public static void main(String[] args) {
+
+	}
+
+}

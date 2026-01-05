@@ -1,0 +1,70 @@
+/*
+ * 1. 생성자는 상속되지 않는다.
+ * 2. 상속관계에서 부모클래스의 기본 생성자를 호출할 때는 super();를 사용한다.
+ */
+
+class Parent05 extends Object{ // extends Object은 생략가능
+	protected int x = 10;
+	protected int y = 20;
+	
+	public Parent05() { // 매개변수가 없는 기본 생성자
+		super(); // 생략 가능, 항상 첫줄에 와야 함. 최고 조상 Object 클래스의 기본 생성자를 호출하면서 생성자 호출은 끝이 남.
+		System.out.println("부모 Parent05 기본생성자 호출");
+	}
+}// Parent05 부모 클래스
+
+class Child05 extends Parent05{
+	protected int z = 30;
+	
+	public Child05() {
+		//super();	생략됨. 부모클래스 Parent05의 기본생성자 호출
+		System.out.println("자손 Child05의 기본생성자 호출");
+	}
+	
+	public void pr() {
+		System.out.println("x = " + x + ", y = " + y + ", z = " + z);
+	}
+}// Child05 자손 클래스
+public class ExtendEx05 {
+
+	public static void main(String[] args) {
+		
+		Child05 child = new Child05();	//new Child05(); 에 의해 자손클래스 Child05 기본생성자 호출
+		child.pr();
+
+	}
+
+}
+
+
+
+//1. 생성자는 상속되지 않는다.
+//2. 상속관계에서 부모클래스의 기본 생성자를 호출할 때는 super();를 사용한다.
+
+class Parent05 extends  Object{     // extends Object은 생략가능
+protected int x = 10;1
+protected int y = 20;
+
+public Parent05(){  // 매개변수가 없는 기본 생성자
+    super();        // 생략 가능, 항상 첫줄에 와야 함. 최고 조상 Object 클래스의 기본 생성자를 호출하면서 생성자 호출은 끝이 남.
+    System.out.println("부모 Parent05 기본생성자 호출");
+}
+} // 부모
+class Child05 extends Parent05{
+protected int z = 30;
+
+public Child05() {
+    //super(); 생략됨. 부모클래스 Parent05의 기본생성자 호출
+    System.out.println("자손 Child05의 기본생성자 호출");
+}
+public void pr(){
+    System.out.println("x = " + x + ", y = " + y + ", z = " + z);
+}
+} // 자손
+
+public class ExtendEx05 {
+public static void main(String[] args) {
+    Child05 child = new Child05();      //new Child05();에 의해 자손클래스 Child05 기본생성자 호출
+    child.pr();
+}
+}

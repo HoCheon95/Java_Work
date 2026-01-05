@@ -1,0 +1,21 @@
+import java.util.Arrays;
+
+class pra2 {
+
+	public String solution(String my_string, int k) {
+        String answer = "";
+        
+        
+        
+        return answer;
+    }
+
+	public static void main(String[] args) {
+
+		pra2 p = new pra2();
+
+		System.out.println(p.solution("string", 3));
+
+	}
+
+}

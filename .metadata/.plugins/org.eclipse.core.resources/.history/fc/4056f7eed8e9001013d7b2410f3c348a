@@ -1,0 +1,11 @@
+import net.daum.model01.ShapeClass;
+
+public class AbsEx06 {
+
+	public static void main(String[] args) {
+		
+		ShapeClass[] arr = new ShapeClass[3];//배열크기가 3인 arr 객체 배열 생성
+		arr[0] = new Circ();
+	}
+
+}

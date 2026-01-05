@@ -1,0 +1,47 @@
+/* 16장.상속.pdf No.26쪽 4번문제)
+ *  강의 교안 문제와 UML 클래스 다이어 그램을 보고 클래스 설계 자바 코드를 완성해 본다.
+ */
+
+class HandPhone {
+	protected String model;
+	protected String number;
+
+	public HandPhone(String model, String number) {
+		this.model = model;
+		this.number = number; // 생성자의 주된 기능인 인스턴스 초기화
+	}// 매개변수 2개짜리 오버로딩 생성자
+
+	public String getModel() {
+		return model;
+	}
+
+	public String getNumber() {
+		return number;
+	}
+}// HandPhone 부모클래스
+
+class DicaPhone extends HandPhone {
+	protected String pixel;
+
+	public DicaPhone(String model, String number, String pixel) {
+		super(model, number); // 부모클래스에서 오버로딩된 생성자 호출
+		this.pixel = pixel;
+	}// 매개변수 3개 짜리 오버로딩 생성자
+	
+	public void prnDicaphone() {
+		System.out.println("모델명 : " + model + " 번호 : " + number + " 화소수 : " + pixel);
+	}// 사용자 정의 메서드
+	
+}// DicaPhone 자손 클래스
+
+public class Ex16_5 {
+
+	public static void main(String[] args) {
+		DicaPhone dp = new DicaPhone("갤럭시", "010", "1024");
+		dp.prnDicaphone();
+		System.out.println(dp.getModel());
+		System.out.println(dp.getNumber());
+
+	}
+
+}
