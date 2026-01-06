@@ -4,7 +4,7 @@
  * 로 변경해 보자. 그리고 코드 결과는 컴파일 에러가 난다. 에러가 나는 이유에 대해서 주석문 처리 한다.
  */
 
-class A{
+class A{//extends Object 이 생략됨
 	public final int method1() {
 		return 0;
 	}

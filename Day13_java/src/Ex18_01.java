@@ -22,12 +22,12 @@ class AbsMain extends Abs11 {
 
 	@Override
 	public int getA() {
-		return 10;
+		return a;
 	}
 
 	@Override
 	public int getB() {
-		return 20;
+		return b;
 	}
 
 }
