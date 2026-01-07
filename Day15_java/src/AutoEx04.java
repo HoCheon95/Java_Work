@@ -5,14 +5,14 @@
 class Point04 extends Object{	// Point04 클래스 / extends Object 생략 가능
 	int a,b;	// 멤버변수 중 인스턴스변수(속성)
 	
-	public Point04() {}
+	public Point04() {} // 기본 생성자
 	
 	public Point04(int a, int b) {
 		this.a = a;
 		this.b = b;
 	}// 생성자 오버로딩
 
-	@Override
+	@Override// Object equals() 내장 메서드를 오버라이딩해서 사용자 동작에 맞게 수정 
 	public boolean equals(Object obj) {
 		
 		Point04 pt = null;//지역변수
@@ -41,11 +41,11 @@ public class AutoEx04 {
 		if(pt01 == pt02) {//참조타입을 ==로 비교하면 객체주소를 비교한다.
 			System.out.println("같다.");
 		}else {
-			System.out.println("다르다");
+			System.out.println("다르다");// 객체주소는 서로 다르므로 else
 		}
 		
 		if(pt01.equals(pt02)) {//값만 비교
-			System.out.println("값이 같다.");
+			System.out.println("값이 같다.");// 값만 비교하므로 if조건 성립
 		}else {
 			System.out.println("값이 다르다.");
 		}
