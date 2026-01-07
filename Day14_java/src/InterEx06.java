@@ -15,7 +15,7 @@ interface IColor06 {
 }
 
 abstract class AbsColor06 implements IColor06 {// 추상클래스 상속
-	int color = ORANGE;// 추상클래스에 일반 변수가 올 수 있따. 2가 저장됨
+	int color = ORANGE;// 추상클래스에 일반 변수가 올 수 있다. 2가 저장됨
 
 	@Override
 	public void setColor(int color) {
