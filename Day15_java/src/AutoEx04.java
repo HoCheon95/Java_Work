@@ -5,15 +5,15 @@
 class Point04 extends Object{	// Point04 클래스 / extends Object 생략 가능
 	int a,b;	// 멤버변수 중 인스턴스변수(속성)
 	
-	public Point04() {} // 기본 생성자
+	public Point04() {} // 기본 생성자 | 매개변수가 없는 기본 생성자
 	
 	public Point04(int a, int b) {
-		this.a = a;
+		this.a = a;	// 좌측멤버변수와 우측매개변수명이 같을 때 멤버변수 앞에 내 자신 인스턴스 가리키는 참조변수 this.을 붙인다.
 		this.b = b;
 	}// 생성자 오버로딩
 
-	@Override// Object equals() 내장 메서드를 오버라이딩해서 사용자 동작에 맞게 수정 
-	public boolean equals(Object obj) {
+	@Override// Object 클래스의 equals() 메서드를 재정의(오버라이딩) 
+	public boolean equals(Object obj) {// Object 는 모든 클래스의 최상위 부모 타입
 		
 		Point04 pt = null;//지역변수
 		
@@ -45,7 +45,7 @@ public class AutoEx04 {
 		}
 		
 		if(pt01.equals(pt02)) {//값만 비교
-			System.out.println("값이 같다.");// 값만 비교하므로 if조건 성립
+			System.out.println("값이 같다.");// 값만 비교하므로 if 조건 성립
 		}else {
 			System.out.println("값이 다르다.");
 		}
