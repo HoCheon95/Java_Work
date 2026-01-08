@@ -14,7 +14,7 @@ public class ListEx02 {
 
 	public static void main(String[] args) {
 		List list = new ArrayList();
-
+		
 		list.add(100);// 기본타입 int -> 참조 래퍼타입 Integer로 오토박싱됨(자바 5버전에서 추가) +
 		// Integer가 부모타입 Object으로 업캐스팅
 		list.add(100);// 오토박싱과 업캐스팅
