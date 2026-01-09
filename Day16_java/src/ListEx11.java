@@ -15,7 +15,7 @@ public class ListEx11 {
 		Map<String, Integer> hm = new HashMap<>();
 		/*
 		 * 앞 부분 <String, Integer> 제네릭 타입만 봐도 뒤부분 제네릭 타입이 무엇인지 추론이 가능하다. 그래서 자바 7버전부터는 뒷
-		 * 부분 제네릭 타입 지정은 다으모가 같이 생략되었다. <>
+		 * 부분 제네릭 타입 지정은 다음과 같이 생략되었다. <>
 		 */
 
 		String[] sample = { "to", "be", "or", "not", "to", "be", "is", "a", "p" };
