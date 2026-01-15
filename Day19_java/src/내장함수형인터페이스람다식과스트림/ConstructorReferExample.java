@@ -1,5 +1,6 @@
 package 내장함수형인터페이스람다식과스트림;
 
+import java.util.function.BiFunction;
 import java.util.function.Function;
 
 /*
@@ -20,6 +21,15 @@ public class ConstructorReferExample {
 		/*
 		 * 함수형 인터페이스의 apply(7) 추상메서드의 인자값 7과 동일한 타입 그리고 개수를 가진 Member2 내의 오버로딩 된 생성자를
 		 * 호출한다.
+		 */
+		
+		/*
+		 * BiFunction 내장 함수형 인터페이스는 입력값이 2개이고, 반환값은 하나이다.
+		 */
+		BiFunction<String, Integer, Member2> fun02 = Member2 :: new;
+		fun02.apply("자바", 21);
+		/*
+		 * 함수형 인터페이스 aaply("자바", 21)의 2개 인자값 타입과 개수가 각각 동일한 Member2 내의 오버로딩 된 생성자를 호출한다. 
 		 */
 
 	}
