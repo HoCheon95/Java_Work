@@ -1,5 +1,5 @@
 /*
- * ë©€í‹°ìŠ¤ë ˆë“œ ê¸°ëŠ¥ì´ ì—†ëŠ” ë„¤íŠ¸ì›Œí¬ í´ë¼ì´ì–¸íŠ¸(ì‚¬ìš©ìž) í”„ë¡œê·¸ëž¨
+ * ¸ÖÆ¼½º·¹µå ±â´ÉÀÌ ¾ø´Â ³×Æ®¿öÅ© Å¬¶óÀÌ¾ðÆ®(»ç¿ëÀÚ) ÇÁ·Î±×·¥
  */
 
 import java.io.InputStream;
@@ -10,53 +10,53 @@ import java.net.Socket;
 import java.util.Scanner;
 
 public class EchoClientEx {
-	Socket client = null;//ì„œë²„ì™€ í†µì‹ í•˜ê¸° ìœ„í•´ì„œ í•„ìš”í•œ ì‚¬ìš©ìž
-	String ip = null;//ì„œë²„ ipì£¼ì†Œë¥¼ ì €ìž¥í•  ë³€ìˆ˜
-	static final int PORT = 7000; //ì„œë²„ì™€ í†µì‹ í•˜ê¸° ìœ„í•œ í¬íŠ¸ë²ˆí˜¸
+	Socket client = null;//¼­¹ö¿Í Åë½ÅÇÏ±â À§ÇØ¼­ ÇÊ¿äÇÑ »ç¿ëÀÚ
+	String ip = null;//¼­¹ö ipÁÖ¼Ò¸¦ ÀúÀåÇÒ º¯¼ö
+	static final int PORT = 7000; //¼­¹ö¿Í Åë½ÅÇÏ±â À§ÇÑ Æ÷Æ®¹øÈ£
 	
 	Scanner scan = null;
 	
 	InputStream is = null;
-	ObjectInputStream ois = null;//ìž…ë ¥ìŠ¤íŠ¸ë¦¼
+	ObjectInputStream ois = null;//ÀÔ·Â½ºÆ®¸²
 	
 	OutputStream os = null;
-	ObjectOutputStream oos = null;//ì¶œë ¥ìŠ¤íŠ¸ë¦¼
+	ObjectOutputStream oos = null;//Ãâ·Â½ºÆ®¸²
 	
-	String sendData;//ì„œë²„ë¡œ ë³´ë‚¼ ë©”ì‹œì§€ë¥¼ ì €ìž¥í•  ë³€ìˆ˜
-	String receiveData; //ì„œë²„ì—ì„œ ë°›ì€ ë©”ì‹œì§€ë¥¼ ì €ìž¥í•  ë³€ìˆ˜
+	String sendData;//¼­¹ö·Î º¸³¾ ¸Þ½ÃÁö¸¦ ÀúÀåÇÒ º¯¼ö
+	String receiveData; //¼­¹ö¿¡¼­ ¹ÞÀº ¸Þ½ÃÁö¸¦ ÀúÀåÇÒ º¯¼ö
 	
 	public EchoClientEx(String ip) {
 		this.ip = ip;
 		
 		try{
-			System.out.println("##### ì‚¬ìš©ìž ì±„íŒ… í”„ë¡œê·¸ëž¨ #####");
+			System.out.println("##### »ç¿ëÀÚ Ã¤ÆÃ ÇÁ·Î±×·¥ #####");
 			client = new Socket(ip, PORT);
 			/*
-			 * ì†Œì¼“ ìƒì„±ìž ì¸ìžê°’ìœ¼ë¡œ ì„œë²„ IPì£¼ì†Œì™€ í¬íŠ¸ë²ˆí˜¸ë¥¼ ì „ë‹¬í•˜ë©´ì„œ ì‚¬ìš©ìž ì†Œì¼“ ìƒì„±
-			 * -> ì´ ì‹œì ì´ ì„œë²„ì™€ ì ‘ì†ì´ ì´ë£¨ì–´ ì§€ëŠ” ê²½ìš°ì´ë‹¤.
+			 * ¼ÒÄÏ »ý¼ºÀÚ ÀÎÀÚ°ªÀ¸·Î ¼­¹ö IPÁÖ¼Ò¿Í Æ÷Æ®¹øÈ£¸¦ Àü´ÞÇÏ¸é¼­ »ç¿ëÀÚ ¼ÒÄÏ »ý¼º
+			 * -> ÀÌ ½ÃÁ¡ÀÌ ¼­¹ö¿Í Á¢¼ÓÀÌ ÀÌ·ç¾î Áö´Â °æ¿ìÀÌ´Ù.
 			 */
 			scan = new Scanner(System.in);
 			
 			os = client.getOutputStream();
-			oos = new ObjectOutputStream(os);//ì¶œë ¥ìŠ¤íŠ¸ë¦¼ ê°ì²´ ìƒì„±
+			oos = new ObjectOutputStream(os);//Ãâ·Â½ºÆ®¸² °´Ã¼ »ý¼º
 			
 			is = client.getInputStream();
-			ois = new ObjectInputStream(is);//ìž…ë ¥ìŠ¤íŠ¸ë¦¼ ê°ì²´ ìƒì„±
+			ois = new ObjectInputStream(is);//ÀÔ·Â½ºÆ®¸² °´Ã¼ »ý¼º
 			
-			System.out.print("ìž…ë ¥ >> ");
+			System.out.print("ÀÔ·Â >> ");
 			
 			while((sendData = scan.nextLine()) != null) {
-				//nextLine() ë©”ì„œë“œë¡œ ë¬¸ìžì—´ë¡œ ì½ì–´ë“¤ìž„, ë” ì´ìƒ ì½ì„ ê°’ì´ ì—†ë‹¤ë©´ null
-				oos.writeObject(sendData);//ì„œë²„ë¡œ ì „ì†¡
-				oos.flush();//ì¶œë ¥ìŠ¤íŠ¸ë¦¼ ë¹„ì›€
+				//nextLine() ¸Þ¼­µå·Î ¹®ÀÚ¿­·Î ÀÐ¾îµéÀÓ, ´õ ÀÌ»ó ÀÐÀ» °ªÀÌ ¾ø´Ù¸é null
+				oos.writeObject(sendData);//¼­¹ö·Î Àü¼Û
+				oos.flush();//Ãâ·Â½ºÆ®¸² ºñ¿ò
 				
-				if(sendData.equals("exit")) {//ë¬¸ìžì—´ ë‚´ìš©ì´ exit ì™€ ê°™ë‹¤ë©´
-					break;//ë°˜ë³µë¬¸ ì¢…ë£Œ
+				if(sendData.equals("exit")) {//¹®ÀÚ¿­ ³»¿ëÀÌ exit ¿Í °°´Ù¸é
+					break;//¹Ýº¹¹® Á¾·á
 				}
 				
-				receiveData = (String)ois.readObject();//ì„œë²„ë¡œ ë¶€í„° ì „ì†¡ë°›ì€ ë©”ì‹œì§€ë¥¼ ì €ìž¥
-				System.out.println(client.getInetAddress() + "ë¡œ ë¶€í„° ì „ì†¡ë°›ì€ ë©”ì‹œì§€ : " + receiveData);
-				System.out.print("ìž…ë ¥ >> ");
+				receiveData = (String)ois.readObject();//¼­¹ö·Î ºÎÅÍ Àü¼Û¹ÞÀº ¸Þ½ÃÁö¸¦ ÀúÀå
+				System.out.println(client.getInetAddress() + "·Î ºÎÅÍ Àü¼Û¹ÞÀº ¸Þ½ÃÁö : " + receiveData);
+				System.out.print("ÀÔ·Â >> ");
 				
 			}
 		}catch(Exception e) {
@@ -72,22 +72,22 @@ public class EchoClientEx {
 				if(client != null) client.close();
 			}catch(Exception e) {e.printStackTrace();}
 		}//finally
-	}//ìƒì„±ìž ì˜¤ë²„ë¡œë”©
+	}//»ý¼ºÀÚ ¿À¹ö·Îµù
 	
 	
 	
 	
 	public static void main(String[] args) {
 		new EchoClientEx("192.168.145.12");
-		//192.168.145.38 í¬ê±¸
+		//192.168.145.38 Èñ°É
 		/*
-		 * ìƒì„±ìž ì¸ìžê°’ìœ¼ë¡œ ì„œë²„ ip ì£¼ì†Œê°€ ë“¤ì–´ê°„ë‹¤. localhostëŠ” ëª¨ë“  ë‚´ ìžì‹  ì»´í“¨í„°ë¥¼ ì˜ë¯¸í•˜ëŠ” í˜¸ìŠ¤íŠ¸ì´ë¦„ì´ë‹¤.
-		 * 127.0.0.1ì€ ëª¨ë“  ë‚´ ìžì‹  ì»´í“¨í„°ë¥¼ ì˜ë¯¸í•˜ëŠ” ipì£¼ì†Œì´ë‹¤. ê²°êµ­ ë‚´ ìžì‹  ì»´í“¨í„°ê°€ ì±„íŒ…ì„œë²„ì´ê³  í´ë¼ì´ì–¸íŠ¸ê°€ ë˜ëŠ”
-		 * ê²ƒì´ë‹¤.
+		 * »ý¼ºÀÚ ÀÎÀÚ°ªÀ¸·Î ¼­¹ö ip ÁÖ¼Ò°¡ µé¾î°£´Ù. localhost´Â ¸ðµç ³» ÀÚ½Å ÄÄÇ»ÅÍ¸¦ ÀÇ¹ÌÇÏ´Â È£½ºÆ®ÀÌ¸§ÀÌ´Ù.
+		 * 127.0.0.1Àº ¸ðµç ³» ÀÚ½Å ÄÄÇ»ÅÍ¸¦ ÀÇ¹ÌÇÏ´Â ipÁÖ¼ÒÀÌ´Ù. °á±¹ ³» ÀÚ½Å ÄÄÇ»ÅÍ°¡ Ã¤ÆÃ¼­¹öÀÌ°í Å¬¶óÀÌ¾ðÆ®°¡ µÇ´Â
+		 * °ÍÀÌ´Ù.
 		 * 
-		 * ë¬¸ì œ) ì¤‘ê°„ í”„ë¡œì íŠ¸ ê° íŒ€ì¡°ë³„ 1íŒ€(ì¡°), 2íŒ€(ì¡°) íŒ€ìž¥, ë¶€íŒ€ìž¥, íŒ€ì›ì´ ê°ê° ì±„íŒ…ì„œë²„ê°€ ë˜ì–´ì„œ ê° íŒ€ì›ì´ 
-		 * í´ë¼ì´ì–¸íŠ¸(ì‚¬ìš©ìž)ê°€ ë˜ì–´ì„œ ë‹¤ì¤‘ ì‚¬ìš©ìž ì ‘ì†ì´ ì´ë£¨ì–´ì§€ëŠ” ê°œë°œìž í…ŒìŠ¤íŠ¸ë¥¼ í•´ë³¸ë‹¤. ê·¸ë¦¬ê³  ì—ëŸ¬ê°€ ë°œìƒí•˜ë©´
-		 * ê° íŒ€ë³„ë¡œ ë””ë²„ê¹…ì„ í•´ì„œ ì—ëŸ¬ê°€ ë‚˜ì§€ ì•Šë„ë¡ ìˆ˜ì •í•´ ë³¸ë‹¤.
+		 * ¹®Á¦) Áß°£ ÇÁ·ÎÁ§Æ® °¢ ÆÀÁ¶º° 1ÆÀ(Á¶), 2ÆÀ(Á¶) ÆÀÀå, ºÎÆÀÀå, ÆÀ¿øÀÌ °¢°¢ Ã¤ÆÃ¼­¹ö°¡ µÇ¾î¼­ °¢ ÆÀ¿øÀÌ 
+		 * Å¬¶óÀÌ¾ðÆ®(»ç¿ëÀÚ)°¡ µÇ¾î¼­ ´ÙÁß »ç¿ëÀÚ Á¢¼ÓÀÌ ÀÌ·ç¾îÁö´Â °³¹ßÀÚ Å×½ºÆ®¸¦ ÇØº»´Ù. ±×¸®°í ¿¡·¯°¡ ¹ß»ýÇÏ¸é
+		 * °¢ ÆÀº°·Î µð¹ö±ëÀ» ÇØ¼­ ¿¡·¯°¡ ³ªÁö ¾Êµµ·Ï ¼öÁ¤ÇØ º»´Ù.
 		 */
 	}
 
