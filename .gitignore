@@ -19,10 +19,16 @@
 !Java_Study02/src/
 !Java_Study02/src/**
 
-# 3-1) JDBC 프로젝트는 전부 포함 (src + lib + jar)
+# 3-1) JDBC 프로젝트 설정
 !JDBC/
-!JDBC/lib/
-!JDBC/lib/**
+!JDBC/**/
+
+# JDBC 내부에서 제외할 특정 설정 파일들
+JDBC/.gitattributes
+JDBC/.gitignore
+JDBC/.project
+JDBC/.settings/
+JDBC/bin/
 
 # 3-2) demo(Spring Boot) 프로젝트 허용
 !demo/
