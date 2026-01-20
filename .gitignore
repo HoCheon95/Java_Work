@@ -24,5 +24,9 @@
 !JDBC/lib/
 !JDBC/lib/**
 
+# 3-2) demo(Spring Boot) 프로젝트 허용
+!demo/
+!demo/**
+
 # 4) git 설정 파일은 항상 허용
 !.gitignore
