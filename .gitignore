@@ -13,6 +13,16 @@
 **/*.class
 **/*.log
 **/.gitattributes
+**/.project
+**/.classpath
+**/.settings/
+**/.vscode/
+**/bin/
+**/target/
+**/*.class
+**/.mvn/
+**/mvnw
+**/mvnw.cmd
 
 # 3) Day 프로젝트 허용
 !Day*_java/
@@ -43,3 +53,4 @@
 
 # 7) 설정 파일 허용
 !.gitignore
+
