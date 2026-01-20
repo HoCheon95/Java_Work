@@ -17,9 +17,7 @@ public class ConsTest01 {
 		rc.turnOn();
 		rc.setVolume(0);
 		rc.turnOff();
-		//test 입니다.
-		// ㅅㄷㅅㄴㄷㅅㄴㅅㄷㄴㅇㄹㄴㅇㄹㄴㅇㄹㄴㅇㄹㄴㅇㄹㄴㅇ
-		//ㄴㄴㅁㄹㄴㄻㄴㄹㄴㄹㄴㄹ
+
 	}
 
 }
