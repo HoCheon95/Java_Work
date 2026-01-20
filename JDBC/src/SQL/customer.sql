@@ -115,4 +115,8 @@ select * from customer order by cus_no DESC;
 --4번 레코드 삭제
 delete from customer where cus_no = 4;
 
-COMMIT;
+SELECT * FROM nls_database_parameters WHERE parameter LIKE '%CHARACTERSET%';
+
+ALTER SESSION SET NLS_LANGUAGE = 'KOREAN';
+ALTER SESSION SET NLS_TERRITORY = 'KOREA';
+
