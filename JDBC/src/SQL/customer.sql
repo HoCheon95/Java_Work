@@ -62,3 +62,57 @@ select * from customer; --customer 테이블의 모든 컬럼(*) 레코드 데�
 */
 
 --cus_seq 시퀀스 생성
+create sequence cus_seq
+start with 1
+increment BY 1
+NOCACHE
+NOCYCLE;
+
+--생성된 cus_seq 시퀀스로 부터 다음번호값 확인
+select cus_seq.nextval as "다음시퀀스번호값" from DUAL;
+
+--customer 테이블에 2개의 레코드를 저장실습
+insert into customer (cus_no, cus_name, cus_phone, cus_email) VALUES(cus_seq.nextval, '홍길동', '010-7777-7777', 'hong@naver.com');
+
+insert into customer (cus_no, cus_name, cus_phone, cus_email) values(cus_seq.nextval, '이순신', '010-9999-9999', 'shin@naver.com');
+
+/*
+    레코드 검색쿼리문 문법형식)
+        select 컬럼목록(전체컬럼은 *) from 테이블명 where 조건식 order by 기준컬럼 desc(asc);
+
+        order by는 정렬문이다.
+            1. desc는 내림차순 정렬이다.
+            2. 내림차순 정렬 규칙)
+                한글은 가나다 역순, 영어는 알파벳 역순, 숫자는 큰숫자부터 먼저 정렬한다.
+            
+            오름차순 정렬문 asc는 기본값으로 생략가능하다. 오름차순 정렬 순서는 내림차순 정렬순서의 역순이다.
+*/
+
+-- 고객번호를 기준으로 내림차순 정렬
+select * from customer order by cus_no DESC;
+
+/*
+    레코드 수정문 문법형식)
+        update 테이블명
+        set 컬럼명 = 수정할 값, 컬럼명 = 수정할 값 ..
+        where 조건식;
+*/
+
+--3번 고객번호를 기준으로 고객이름을 신사임당, 고객이메일을 dang@daum.net 으로 변경해 본다.
+update customer set cus_name = '신사임당', cus_email='dang@daum.net' where CUS_NO=3;
+
+--3번 고객번호를 기준으로 수정된 고객이름과 고객 이메일을 확인
+select cus_name, cus_email from CUSTOMER where cus_no = 3;
+
+/*
+    레코드 삭제 쿼리문 문법 형식)
+        delete from 테이블명 where 조건식;
+*/
+insert into customer (cus_no, cus_name, cus_phone, cus_email) values(cus_seq.nextval, '삭제할이름', '010-555-5555', 'del@daum.net');
+
+select * from customer order by cus_no DESC;
+
+--4번 레코드 삭제
+delete from customer where cus_no = 4;
+
+COMMIT;
