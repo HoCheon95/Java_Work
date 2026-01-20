@@ -24,5 +24,7 @@
 !JDBC/lib/
 !JDBC/lib/**
 
+!demo/
+
 # 4) git 설정 파일은 항상 허용
 !.gitignore
