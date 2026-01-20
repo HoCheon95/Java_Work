@@ -21,7 +21,8 @@
 
 # 3-1) JDBC 프로젝트는 전부 포함 (src + lib + jar)
 !JDBC/
-!JDBC/**
+!JDBC/lib/
+!JDBC/lib/**
 
 # 4) git 설정 파일은 항상 허용
 !.gitignore
