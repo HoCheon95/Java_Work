@@ -1,38 +1,45 @@
 # 1) 기본: 전부 무시
 *
 
-# 2) Day 프로젝트: 폴더 + src 허용
+# 2) 공통 제외 대상 (IDE 설정 및 빌드 결과물)
+# 아래 파일들은 어떤 프로젝트 폴더에 있든 무시합니다.
+**/.project
+**/.classpath
+**/.settings/
+**/.vscode/
+**/.idea/
+**/target/
+**/bin/
+**/*.class
+**/*.log
+**/.gitattributes
+
+# 3) Day 프로젝트 허용
 !Day*_java/
 !Day*_java/src/
 !Day*_java/src/**
 
-# 3) Study 프로젝트도 허용
+# 4) Study 프로젝트 허용
 !Java_study/
 !Java_study/src/
 !Java_study/src/**
-
 !Java_Study01/
 !Java_Study01/src/
 !Java_Study01/src/**
-
 !Java_Study02/
 !Java_Study02/src/
 !Java_Study02/src/**
 
-# 3-1) JDBC 프로젝트 설정
+# 5) JDBC 프로젝트 설정 (src와 중요 설정만 포함)
 !JDBC/
 !JDBC/**/
+!JDBC/src/**
+!JDBC/pom.xml
+!JDBC/HELP.md
 
-# JDBC 내부에서 제외할 특정 설정 파일들
-JDBC/.gitattributes
-JDBC/.gitignore
-JDBC/.project
-JDBC/.settings/
-JDBC/bin/
-
-# 3-2) demo(Spring Boot) 프로젝트 허용
+# 6) demo(Spring Boot) 프로젝트 허용
 !demo/
 !demo/**
 
-# 4) git 설정 파일은 항상 허용
+# 7) 설정 파일 허용
 !.gitignore
