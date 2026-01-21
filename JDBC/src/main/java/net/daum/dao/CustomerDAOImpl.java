@@ -1,11 +1,11 @@
-package com.example.dao;
+package net.daum.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-import com.example.dto.CustomerDTO;
+import net.daum.dto.CustomerDTO;
 
 public class CustomerDAOImpl { //자바와 오라클을 연결하는 JDBC
     /*  JDBC api는 java.sql.* 패키지에서 제공한다. *는 모든 API를 뜻한다.
@@ -67,4 +67,22 @@ public class CustomerDAOImpl { //자바와 오라클을 연결하는 JDBC
         } //getFindCusNo()
         return cusNo;
     }
+
+    //고객번호를 기준으로 고객정보 삭제
+    public int delCustomer(int cus_no) {
+        int re = -1; //삭제 실패시 반환값
+
+        try (
+            Connection con = DriverManager.getConnection(url, user, pwd); // db연결con 생성
+        ) {
+            sql = "delete from customer where cus_no=?"; //고객번호를 기준으로 삭제
+            pstmt = con.prepareStatement(sql);
+            pstmt.setInt(1, cus_no);
+
+            re = pstmt.executeUpdate(); //삭제 쿼리문 수행후 성공한 레코드 행의 개수 반환
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return re;
+    } //delCustomer
 }

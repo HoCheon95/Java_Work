@@ -113,7 +113,7 @@ insert into customer (cus_no, cus_name, cus_phone, cus_email) values(cus_seq.nex
 select * from customer order by cus_no DESC;
 
 --4번 레코드 삭제
-delete from customer where cus_no = 4;
+delete from customer where cus_no = 7;
 
 SELECT * FROM nls_database_parameters WHERE parameter LIKE '%CHARACTERSET%';
 

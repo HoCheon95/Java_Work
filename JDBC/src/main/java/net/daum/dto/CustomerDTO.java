@@ -1,4 +1,4 @@
-package com.example.dto;
+package net.daum.dto;
 
 import lombok.Getter;
 import lombok.Setter;
