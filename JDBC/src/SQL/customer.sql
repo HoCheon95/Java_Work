@@ -76,6 +76,10 @@ insert into customer (cus_no, cus_name, cus_phone, cus_email) VALUES(cus_seq.nex
 
 insert into customer (cus_no, cus_name, cus_phone, cus_email) values(cus_seq.nextval, '이순신', '010-9999-9999', 'shin@naver.com');
 
+insert into customer (cus_no, cus_name, cus_phone, cus_email) values(cus_seq.nextval, '아무개1', '010-9999-9999', 'shin@naver.com');
+insert into customer (cus_no, cus_name, cus_phone, cus_email) values(cus_seq.nextval, '아무개2', '010-9999-9999', 'shin@naver.com');
+
+
 /*
     레코드 검색쿼리문 문법형식)
         select 컬럼목록(전체컬럼은 *) from 테이블명 where 조건식 order by 기준컬럼 desc(asc);
