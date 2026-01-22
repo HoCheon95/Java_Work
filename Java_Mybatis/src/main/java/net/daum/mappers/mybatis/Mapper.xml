@@ -4,7 +4,7 @@
 
 <mapper namespace="Mapper"> <!--  매퍼 네임스페이스 명 지정(네임스페이스명은 사용자 정의 이름) -->
 
-<!--  매퍼태그에 SQL 문이 들어간다.
+  <!--  매퍼태그에 SQL 문이 들어간다.
       
       mybatis 특징)
         1.SQL문에서 값을 할당할 때 ${}는 내부적으로 JDBC의 Statement 방식과 유사하게 동작한다. 이 방식은 보안상 위험에서 권장하지 않는다.
@@ -32,5 +32,11 @@
            - 즉, 호출할 때 "namespace.id" 형태로 구분됨. 즉 매퍼태그 파일이 다른 경우 같은 id명을 사용해서 매퍼 네임스페이스명을 id명 앞에 붙여서 구분한다.
            - 서로 다른 네임스페이스에 같은 id를 가진 쿼리가 있어도 문제 없음
            - 네임스페이스가 다르면 별도의 id로 인식됨    
- -->
- </mapper>
+  -->
+
+  <!--부서목록-->
+  <select id="dept_list" resultType="net.daum.dto.DeptDTO">
+    <!--resultType은 반환타입 속성이고 생략불가-->
+    select * from tbl_dept order by deptno asc
+  </select>
+</mapper>

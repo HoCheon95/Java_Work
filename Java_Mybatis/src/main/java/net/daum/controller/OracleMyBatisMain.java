@@ -1,9 +1,10 @@
 package net.daum.controller;
 
+import java.util.List;
 import java.util.Scanner;
 
+import net.daum.dto.DeptDTO;
 import net.daum.service.OracleMyBatisService;
-
 public class OracleMyBatisMain {
 
     /*  서비스 흐름은 컨트롤러 ↔ 서비스 ↔ DAO ↔ MyBatis 매퍼태그 해당 아이디를 호출해서 쿼리문 수행
@@ -29,11 +30,21 @@ public class OracleMyBatisMain {
         System.out.println(); //줄바꿈
         System.out.println("[부서 목록");
         System.out.println("--------------------------------------------");
-        System.out.printf("%-6s%-12s%-16s\n","부서번호", "부서명", "부서지역");
+        System.out.printf("%-6s%-12s%-16s\n", "부서번호", "부서명", "부서지역");
         /*
-            %-6s에서 %s는 문자열 출력 형태지시자이다. -는 왼쪽 정렬, 6은 최소 출력 너비 6칸, 결국 %-6s는 
-            문자열을 왼쪽정렬하고, 전체 너비를 6칸으로 맞추라는 의미이다.
-         */
+        %-6s에서 %s는 문자열 출력 형태지시자이다. -는 왼쪽 정렬, 6은 최소 출력 너비 6칸, 결국 %-6s는 
+        문자열을 왼쪽정렬하고, 전체 너비를 6칸으로 맞추라는 의미이다. 빈칸이 남으면 오른쪽에 공백이 들어간다.
+        */
+        System.out.println("--------------------------------------------");
+
+        List < DeptDTO > dlist = this.servie.selectAll(); //부서목록을 가져온다. this.은 생략가능
+        if (dlist != null && dlist.size() > 0) { //size()메서드는 컬렉션 원소개수를 반환한다. 첫 원소 개수를 1부터 카운터한다.
+            for (DeptDTO d: dlist) {
+                System.out.printf("%-6d%-12s%-16s\n", d.getDeptno(), d.getDname(), d.getLoc());
+            } //자바 5버전에서 추가된 향상된 확장 for
+        } else {
+            System.out.println("부서목록이 없습니다.");
+        } //if ~ else
     } //list
     public static void main(String[] args) {
 
@@ -42,3 +53,4 @@ public class OracleMyBatisMain {
 
     }
 }
+
