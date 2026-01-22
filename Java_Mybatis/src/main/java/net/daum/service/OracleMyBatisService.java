@@ -27,15 +27,42 @@ public class OracleMyBatisService {
 
     public List < DeptDTO > selectAll() {
         List < DeptDTO > dlist = null;
-        SqlSession sqlSession = MyBatisSessionFactory.getSqlSession();
-        //mybtis 쿼리문을 수행하는 sqlSession 생성
 
-        try {
+        //mybtis 쿼리문을 수행하는 sqlSession 생성
+        try (SqlSession sqlSession = MyBatisSessionFactory.getSqlSession().openSession();) {
             dlist = this.dao.selectAll(sqlSession);
             //Dao쪽 메서드 호출할 떄 mybatis 쿼리문을 수행하는 sqlSession을 인자값으로 전달하는 것에 대해서 주의 요망
-        } finally {
-            sqlSession.close();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         return dlist;
     } //selectAll()
+
+    //부서정보 추가
+    public void insertDept(DeptDTO deptDTO) {
+        try (SqlSession sqlSession = MyBatisSessionFactory.getSqlSession().openSession()) {
+            this.dao.insertDept(deptDTO, sqlSession);
+            sqlSession.commit();
+            /*
+                MyBatis SqlSession 인 경우 auto commit 이 비활성화 되어 있기 때문에 반드시
+                DML(insert,update,delete) 문 수행후 commit() 메서드를 명시적으로 실행해야 한다.
+                그래야만 insert 저장쿼리문이 성공적으로 반영된다. 그렇지 않으면 레코드가 저장되지 않는다.
+            */
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    } //insertDept()
+
+    public DeptDTO getFindDeptNo(int deptno) {
+        DeptDTO ddto = null;
+        try(SqlSession sqlSession = MyBatisSessionFactory.getSqlSession().openSession()) {
+            ddto=this.dao.selectDept(deptno, sqlSession);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return ddto;
+    }
+
 }

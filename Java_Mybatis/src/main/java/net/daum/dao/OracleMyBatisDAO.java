@@ -27,4 +27,15 @@ public class OracleMyBatisDAO {
         //dept_list는 Mapper.xml에서 설정하는 select 아이디명이다.
         return dlist;
     } //selectAll()
+
+    //부서정보 추가
+    public void insertDept(DeptDTO deptDTO, SqlSession sqlSession) {
+        sqlSession.insert("dept_in", deptDTO);//dept_in은 MyBatis Mapper.xml에서 설정하는 insert 아이디명이다.
+    }//insertDept()
+
+    public DeptDTO selectDept(int deptno, SqlSession sqlSession) {
+        DeptDTO dto = sqlSession.selectOne("dept_info", deptno);
+
+        return dto;
+    }
 }

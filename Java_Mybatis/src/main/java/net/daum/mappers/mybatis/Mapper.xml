@@ -39,4 +39,15 @@
     <!--resultType은 반환타입 속성이고 생략불가-->
     select * from tbl_dept order by deptno asc
   </select>
+
+  <!--부서정보 추가-->
+  <insert id="dept_in" parameterType="net.daum.dto.DeptDTO">
+    <!--parameterType은 전달인자 타입이고 생략가능-->
+    insert into tbl_dept (deptno, dname, loc) values(#{deptno}, #{dname}, #{loc})
+  </insert>
+
+  <select id="dept_info" resultType="net.daum.dto.DeptDTO">
+    select * from tbl_dept where deptno = #{deptno}
+  </select>
+
 </mapper>

@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.io.InputStream;
 
 import org.apache.ibatis.io.Resources;
-import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
@@ -19,20 +18,18 @@ public class MyBatisSessionFactory {
 
     static { //클래스 로딩시 초기화
         String resource = "Configuration.xml"; //설정파일의 이름과 경로 지정
-        InputStream inputStream = null; //InputStream은 바이트 입력스트림의 최상위 추상클래스
-        try {
-            inputStream = Resources.getResourceAsStream(resource); //설정파일 읽어오기
-            //System.out.println("Configuration.xml 로딩 성공");
-            //System.out.println("==============================\n");
+
+        try (InputStream inputStream = Resources.getResourceAsStream(resource);) {
+            //InputStream은 바이트 입력스트림의 최상위 추상클래스 설정파일 읽어오기
+            sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
         //SqlSessionFactoryBuilder 객체 생성 후, 읽어온 설정파일로 SqlSessionFactory 빌드
     } //클래스 초기화 블럭
 
-    public static SqlSession getSqlSession() { //SqlSession 반환 
-        SqlSession session = sqlSessionFactory.openSession(); //SqlSessionFactory에서 SqlSession 생성
-        return session; //mybatis에서 쿼리문을 수행할 session 반환
+    public static SqlSessionFactory getSqlSession() { //SqlSession 반환 
+        // SqlSession session = sqlSessionFactory.openSession(); //SqlSessionFactory에서 SqlSession 생성
+        return sqlSessionFactory; //mybatis에서 쿼리문을 수행할 session 반환
     }
 }
