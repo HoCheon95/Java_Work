@@ -1,6 +1,12 @@
 package net.daum.service;
 
+import java.util.List;
+
+import org.apache.ibatis.session.SqlSession;
+
+import net.daum.config.MyBatisSessionFactory;
 import net.daum.dao.OracleMyBatisDAO;
+import net.daum.dto.DeptDTO;
 
 public class OracleMyBatisService {
 
@@ -18,4 +24,18 @@ public class OracleMyBatisService {
         //super();//최고 조상 부모클래스 Object의 기본생성자를 호출
         dao = new OracleMyBatisDAO();
     } //기본생성자 정의 -> new OracleMyBatisService();에 의해서 기본생성자를 호출하면서 dao 객체 생성
+
+    public List < DeptDTO > selectAll() {
+        List < DeptDTO > dlist = null;
+        SqlSession sqlSession = MyBatisSessionFactory.getSqlSession();
+        //mybtis 쿼리문을 수행하는 sqlSession 생성
+
+        try {
+            dlist = this.dao.selectAll(sqlSession);
+            //Dao쪽 메서드 호출할 떄 mybatis 쿼리문을 수행하는 sqlSession을 인자값으로 전달하는 것에 대해서 주의 요망
+        } finally {
+            sqlSession.close();
+        }
+        return dlist;
+    } //selectAll()
 }
