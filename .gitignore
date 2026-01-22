@@ -54,3 +54,9 @@
 # 7) 설정 파일 허용
 !.gitignore
 
+# 8) Java_Mybatis 프로젝트 설정 (src와 중요 설정만 포함)
+!Java_Mybatis/
+!Java_Mybatis/**/
+!Java_Mybatis/src/**
+!Java_Mybatis/pom.xml
+!Java_Mybatis/HELP.md

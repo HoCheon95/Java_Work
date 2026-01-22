@@ -1,0 +1,36 @@
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Mapper"> <!--  매퍼 네임스페이스 명 지정(네임스페이스명은 사용자 정의 이름) -->
+
+<!--  매퍼태그에 SQL 문이 들어간다.
+      
+      mybatis 특징)
+        1.SQL문에서 값을 할당할 때 ${}는 내부적으로 JDBC의 Statement 방식과 유사하게 동작한다. 이 방식은 보안상 위험에서 권장하지 않는다.
+          이 방식은 SQL에 값이 직접 문자열로 치환되어 삽입되어진다.
+        
+        2. 또 다른 방식의 값을 할당할 때 #{}는 내부적으로 JDBC의 PreparedStatement 방식을 따라간다. 보안상 우수해서 이 방식을 주로 권장한다. 
+           SQL에 ?로 대체되고, MyBatis가 타입에 맞게 안전하게 값을 대입한다.
+           
+           결론적으로 2번 방법인 #{}로 sql문에 값을 할당하면 된다.
+           
+       parameterType 속성은 전달인자 타입이고 생략가능하다.  resultType은 반환 타입이고 생략불가이다.  
+       여기서는 net.daum.dto.DeptDTO 빈클래스 별칭이름을 주지 않았기 때문에 parameterType과 resultType속성값으로 풀패키지 경로를 주면 된다.
+       
+       SQL 문 종류   MyBatis 매퍼 태그
+          INSERT   <insert>
+          SELECT   <select>
+          UPDATE   <update>
+          DELETE   <delete>   
+          
+      매퍼 태그 id명 구분하는 방법)
+        1. 매퍼 네임스페이스를 사용하지 않을 경우   - 모든 <select>, <insert>, <update>, <delete> 매퍼 태그의 id는
+         프로젝트 내에서 유일해야 함
+
+        2. 매퍼 네임스페이스를 사용할 경우   - 각 매퍼 XML 파일에 지정된 namespace가 쿼리 아이디 앞에 붙음
+           - 즉, 호출할 때 "namespace.id" 형태로 구분됨. 즉 매퍼태그 파일이 다른 경우 같은 id명을 사용해서 매퍼 네임스페이스명을 id명 앞에 붙여서 구분한다.
+           - 서로 다른 네임스페이스에 같은 id를 가진 쿼리가 있어도 문제 없음
+           - 네임스페이스가 다르면 별도의 id로 인식됨    
+ -->
+ </mapper>
