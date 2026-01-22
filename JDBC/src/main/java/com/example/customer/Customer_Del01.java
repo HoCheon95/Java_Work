@@ -1,4 +1,4 @@
-package net.daum.controller;
+package com.example.customer;
 
 import java.util.Scanner;
 

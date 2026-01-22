@@ -130,15 +130,14 @@ public class BoardDaoImpl {
         return 0;
     }
 
+    //게시판 삭제 -> 번호를 기준으로 삭제
     public void delBoard(int bno) {
-        int re = -1;
-
-        sql = "delete from tbl_board where b_no=?"; //번호를 기준으로 삭제
+        sql = "delete from tbl_board where bno=?"; //번호를 기준으로 삭제
         try (
             Connection con = DriverManager.getConnection(url, user, password); PreparedStatement pstmt = con.prepareStatement(sql);
         ) {
             pstmt.setInt(1, bno);
-            re = pstmt.executeUpdate(); //삭제 쿼리문 수행후 성공한 레코드 행의 개수 반환
+            pstmt.executeUpdate(); //삭제 쿼리문 수행후 성공한 레코드 행의 개수 반환
 
         } catch (Exception e) {
             e.printStackTrace();
