@@ -18,7 +18,7 @@ public class GuestBook_List {
 
         if(glist != null && glist.size() > 0){
             for(GuestBookDTO g : glist){
-                System.out.printf("%d\t%s\t%s\t%s\t%s", g.getGno(), g.getGname(), g.getGtitle(), g.getGcont(), g.getGdate());
+                System.out.printf("%d\t%s\t%s\t%s\t%s\n", g.getGno(), g.getGname(), g.getGtitle(), g.getGcont(), g.getGdate());
             }
         }else{
             System.out.println("방명록 목록이 없습니다.");

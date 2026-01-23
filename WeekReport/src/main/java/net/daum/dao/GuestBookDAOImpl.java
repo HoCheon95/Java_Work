@@ -132,4 +132,25 @@ public class GuestBookDAOImpl {
         return re;
     }
 
+    /* 방명록 삭제 */
+    public int delGuest(int gno) {
+        int re = -1;
+
+        sql = "delete from tbl_guestbook where gno=?"; //삭제 쿼리
+
+        try(
+            Connection con = DriverManager.getConnection(url, user, password);  // db연결 con 생성
+            PreparedStatement pstmt = con.prepareStatement(sql); //쿼리문을 미리 컴파일하여 수행할 pstmt 생성
+        ){
+            //쿼리문에 ? 값 대입
+            pstmt.setInt(1, gno);
+           re = pstmt.executeUpdate(); //삭제 쿼리문 수행후 성공한 레코드 행의 개수 반한
+
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+
+        return re;
+    }
+
 }
