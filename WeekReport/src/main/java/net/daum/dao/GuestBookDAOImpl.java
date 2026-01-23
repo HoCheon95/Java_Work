@@ -1,6 +1,5 @@
 package net.daum.dao;
 
-import java.lang.reflect.Parameter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;

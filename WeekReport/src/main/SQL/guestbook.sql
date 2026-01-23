@@ -13,3 +13,5 @@ create sequence gno_seq
 NOCYCLE;    --임시 메모리 사용 안함
 
 select * from tbl_guestbook;
+
+
