@@ -54,7 +54,7 @@ public class OracleMyBatisMain {
         System.out.println();//개행 -> 줄바꿈
         System.out.println("-------------------------------------");
         System.out.println("메인 메뉴 : 1.Create | 2.Read | 3.Clear | 4.Exit");
-        System.out.print("메뉴 선택:");
+        System.out.print("메뉴 선택 : ");
         String menuNo = scan.nextLine();//문자열로 입력받는다.
         System.out.println();
         
@@ -62,15 +62,32 @@ public class OracleMyBatisMain {
         switch(menuNo){
             case "1" : create();break;//부서정보추가
             case "2" : read(); break;//부서정보 읽기
-            // case "3" : claer(); break;//전체부서 삭제
+            case "3" : claer(); break;//전체부서 삭제
             case "4" : exit(); break;//프로그램 종료
         }
     }//mainMenu()
 
+    //부서전체 삭제
+    private void claer() {
+        System.out.println("[부서전체 삭제]");
+        System.out.println("-------------------------------------");
+        System.out.println("보조 메뉴 : 1.OK | 2.Cancel");
+        System.out.print("메뉴 선택 : ");
+        String menuNo = scan.nextLine();
+
+        if(menuNo.equals("1")){
+            this.service.delAllDept();//부서전체 삭제
+            list();
+        }else{
+            list();
+        }
+
+    }
+
     //부서정보 읽기
     public void read(){
         System.out.println("[부서정보 읽기]");
-        System.out.print("부서번호 입력:");
+        System.out.print("부서번호 입력 : ");
         int deptno = Integer.parseInt(scan.nextLine());
 
         DeptDTO findDeptNo = service.getFindDeptNo(deptno);//부서번호를 기준으로 DB로 부터 부서정보 가져온다.
@@ -89,14 +106,14 @@ public class OracleMyBatisMain {
             //보조메뉴 출력
             System.out.println("-------------------------------------");
             System.out.println("보조 메뉴 : 1.Update | 2.Delete | 3.List");
-            System.out.print("메뉴 선택 :");
+            System.out.print("메뉴 선택 : ");
             String menuNo = scan.nextLine();
             System.out.println();
 
             if(menuNo.equals("1")){//부서정보 수정
-                //update(findDeptNo);
+                update(findDeptNo);
             }else if(menuNo.equals("2")){//부서정보 삭제
-                //delete(findDeptNo);
+                delete(findDeptNo);
             }else{
                 list();
             }
@@ -104,22 +121,68 @@ public class OracleMyBatisMain {
             System.out.println("해당 부서 정보가 존재하지 않습니다!");
             list();
         }
+    }//read()
+
+    //부서번호를 기준으로 부서정보 삭제
+    private void delete(DeptDTO dept) {
+        System.out.println("[부서삭제");
+        System.out.println("-----------------------------------");
+        System.out.println("보조메뉴 : 1.OK | 2.Cancel");
+        System.out.print("메뉴 선택 : ");
+        String menuNo = scan.nextLine();
+
+        if(menuNo.equals("1")){
+            this.service.deleteDept(dept);
+            /*
+                문제) 부서번호를 기준으로 부서가 삭제되게 만들어 본다. Mapper.xml에 설정하는 아이디명은
+                dept_del 이다.
+            */
+            list();
+        }else{
+            list();
+        }
     }
+
+    //부서정보 수정
+    public void update(DeptDTO dept){
+        System.out.println("[부서 수정정보 입력]");
+        System.out.print("수정할 부서명 입력 : ");
+        dept.setDname(scan.nextLine());//수정할 부서명을 문자열로 읽어들여서 바로 setter()메서드에 저장
+        System.out.print("수정할 부서지역 입력 : ");
+        dept.setLoc(scan.nextLine());
+
+        System.out.println("-----------------------------------");
+        System.out.println("보조 메뉴 : 1.OK | 2.Cancel");
+        System.out.print("메뉴 선택 : ");
+        String menuNo = scan.nextLine();
+
+        if(menuNo.equals("1")){
+            System.out.println("\n---------------------------\n");
+            this.service.updateDept(dept);//부서번호를 기준으로 부서명과 부서지역을 수정
+            /*
+                문제) 부서번호를 기준으로 부서명과 부서지역을 수정되게 해본다. Mapper.xml에 설정하는
+                아이디명은 dept_edit 이다.
+            */
+           list();
+        }else{
+            list();
+        }
+    }//update()
     
     //부서정보 추가
     public void create(){
         System.out.println("###### 부서정보 입력(부서정보 추가) ######");
-        System.out.print("부서번호 입력:");
+        System.out.print("부서번호 입력 : ");
         int deptno = Integer.parseInt(scan.nextLine());//부서번호를 문자열로 받아서 정수숫자로 변경
-        System.out.print("부서명 입력:");
+        System.out.print("부서명 입력 : ");
         String dname = scan.nextLine();
-        System.out.print("부서가 있는 지역 입력:");
+        System.out.print("부서가 있는 지역 입력 : ");
         String loc = scan.nextLine();
         
         //보조메뉴 출력
         System.out.println("-------------------------------------");
         System.out.println("보조 메뉴 : 1.OK | 2.Cancel");
-        System.out.print("메뉴 선택 :");
+        System.out.print("메뉴 선택 : ");
         String menuNo = scan.nextLine();
 
         if(menuNo.equals("1")){//문자열 내용이 1과 같다면

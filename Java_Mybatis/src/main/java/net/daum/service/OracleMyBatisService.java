@@ -54,15 +54,46 @@ public class OracleMyBatisService {
         }
     } //insertDept()
 
+    //부서정보를 기준으로 부서정보 검색
     public DeptDTO getFindDeptNo(int deptno) {
-        DeptDTO ddto = null;
+        DeptDTO dept = null;
         try(SqlSession sqlSession = MyBatisSessionFactory.getSqlSession().openSession()) {
-            ddto=this.dao.selectDept(deptno, sqlSession);
+            dept=this.dao.getFindDeptNo(deptno, sqlSession);
 
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return ddto;
-    }
+        return dept;
+    }//getFindDeptNo()
+
+    //부서정보를 기준으로 부서명과 부서지역 수정
+    public void updateDept(DeptDTO dept) {
+        try(SqlSession sqlSession = MyBatisSessionFactory.getSqlSession().openSession()) {
+            this.dao.updateDept(dept,sqlSession);
+            sqlSession.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//updateDept()
+
+    //부서번호를 기준으로 부서정보 삭제
+    public void deleteDept(DeptDTO dept) {
+        try (SqlSession sqlSession = MyBatisSessionFactory.getSqlSession().openSession()){
+            this.dao.deleteDept(dept, sqlSession);
+            sqlSession.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//deleteDept
+
+    //부서전체 삭제
+    public void delAllDept() {
+        try (SqlSession sqlSession = MyBatisSessionFactory.getSqlSession().openSession()){
+            this.dao.delAllDept(sqlSession);
+            sqlSession.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//delAllDept()
 
 }
