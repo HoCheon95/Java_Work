@@ -46,8 +46,24 @@
     insert into tbl_dept (deptno, dname, loc) values(#{deptno}, #{dname}, #{loc})
   </insert>
 
-  <select id="dept_info" resultType="net.daum.dto.DeptDTO">
+  <!--부서정보를 기준으로 부서정보 검색-->
+  <select id="dept_info" parameterType="int" resultType="net.daum.dto.DeptDTO">
     select * from tbl_dept where deptno = #{deptno}
   </select>
+
+  <!--부서정보를 기준으로 부서명과 부서지역 수정-->
+  <update id="dept_edit" parameterType="net.daum.dto.DeptDTO">
+    update tbl_dept SET dname=#{dname}, loc=#{loc} where deptno=#{deptno}
+  </update>
+
+  <!--부서번호를 기준으로 부서삭제-->
+  <delete id="dept_del" parameterType="net.daum.dto.DeptDTO">
+    delete from tbl_dept where deptno=#{deptno}
+  </delete>
+
+  <!--전체부서 삭제-->
+  <delete id="del_all">
+    delete from tbl_dept
+  </delete>
 
 </mapper>

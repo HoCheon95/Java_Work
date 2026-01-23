@@ -33,9 +33,23 @@ public class OracleMyBatisDAO {
         sqlSession.insert("dept_in", deptDTO);//dept_in은 MyBatis Mapper.xml에서 설정하는 insert 아이디명이다.
     }//insertDept()
 
-    public DeptDTO selectDept(int deptno, SqlSession sqlSession) {
-        DeptDTO dto = sqlSession.selectOne("dept_info", deptno);
+    //부서번호를 기준으로 부서정보 검색
+    public DeptDTO getFindDeptNo(int deptno, SqlSession sqlSession) {
+        return sqlSession.selectOne("dept_info", deptno);
+    }//getFindDeptNo()
 
-        return dto;
-    }
+    //부서정보를 기준으로 부서명과 부서지역 수정
+    public void updateDept(DeptDTO dept, SqlSession sqlSession) {
+        sqlSession.update("dept_edit", dept);
+    }//updateDept()
+
+    //부서번호를 기준으로 부서삭제
+    public void deleteDept(DeptDTO dept, SqlSession sqlSession) {
+        sqlSession.delete("dept_del", dept);
+    }//deleteDept()
+
+    //부서전체 삭제
+    public void delAllDept(SqlSession sqlSession) {
+        sqlSession.delete("del_all");
+    }//delAllDept()
 }
