@@ -16,9 +16,9 @@ public class GuestBookDTO {
         중간 데이터 저장빈 DTO -> guestbook 테이블의 컬럼명과 빈클래스 멤버변수명(인스턴스 변수명 -> 속성명)은 같게 한다.
         이유는 mybatis SQL 프레임웍을 다룰때 코드 라인을 줄이는 방법이다.
     */
-   private int gno;
-   private String gname;
-   private String gtitle;
-   private String gcon;
-   private String gdate;
+   private int gno;         // 방명록 번호
+   private String gname;    // 작성자 이름
+   private String gtitle;   // 글제목
+   private String gcont;    // 글내용
+   private String gdate;    // 등록날짜
 }
