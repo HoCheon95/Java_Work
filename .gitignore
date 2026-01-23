@@ -60,3 +60,10 @@
 !Java_Mybatis/src/**
 !Java_Mybatis/pom.xml
 !Java_Mybatis/HELP.md
+
+# 8) WeekReport 프로젝트 설정 (src와 중요 설정만 포함)
+!WeekReport/
+!WeekReport/**/
+!WeekReport/src/**
+!WeekReport/pom.xml
+!WeekReport/HELP.md
