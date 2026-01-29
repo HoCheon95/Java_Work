@@ -5,11 +5,15 @@ import java.io.IOException;
 import java.util.Properties;
 import java.util.StringTokenizer;
 
-import javax.servlet.RequestDispatcher;
-import javax.servlet.http.HttpServletRequest;
-import javax.swing.Action;
-public class MFrontController {
-    /* 서블릿 자바 특징)
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
+public class MFrontController extends HttpServlet {
+
+   /* 서블릿 자바 특징)
     *  1.서블릿 클래스는 온라인 상에서 누구나 다 접근 할 수 있게 public 접근 권한 제어자로 선언한다.
     *  2.서블릿은 HttpServlet으로 상속받는다.
     *  3.get or post 에 상관없이 service()메서드를 호출한다.
@@ -19,10 +23,10 @@ public class MFrontController {
     *  web.xml에 설정한 url-pattern 매핑주소인 *.do가 실행되면 MFrontController 서블릿 클래스가 실행된다. 이 클래스에서 daum.properties 파일을 로드
     *  실행해서 실제 매핑주소에 해당하는 컨트롤러 클래스가 실행되는 일대 다 구조 즉 하나의 서블릿 클래스로 다수의 매핑주소를 실행하는 것이다.
     */
-
-    @Override
-    protected void service(HttpServletRequest request, HttpsServletResponse response)throws ServletEXception, IOException{
-        String RequestURI=request.getRequestURI();// /Middle_Project/*.do 경로를 구함
+   @Override
+   protected void service(HttpServletRequest request, HttpServletResponse response) 
+         throws ServletException, IOException {
+      String RequestURI=request.getRequestURI();// /Middle_Project/*.do 경로를 구함
       String contextPath=request.getContextPath();// /Middle_Project 컨텍스트 패스경로를 구함
       String command=RequestURI.substring(contextPath.length());//컨텍스트 패스 경로 이후의 /*.do 즉 매핑주소를 구함.
       //매핑주소란 url-pattern을 말하는 것으로 웹브라우저 주소창에 실행되는 주소값을 뜻한다.
@@ -38,8 +42,8 @@ public class MFrontController {
       FileInputStream fis=
             new FileInputStream(request.getSession().getServletContext().getRealPath("WEB-INF/classes/daum.properties"));
       //프로퍼티 파일을 읽어들임.=>톰캣 WAS서버에 의해서 변경된 실제 톰캣프로젝트 경로의 해당파일을 읽어들임.
-      //D:\Java_Program\java\2025\1201_Daejeon\Java_WorkSpace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\
-      //wtpwebapps\Middle_Project\WEB-INF\classes
+      /*D:\20251201_java\Java_WorkSpace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\
+         wtpwebapps\Middle_Project\WEB-INF\classes */
 
       prop.load(fis);//프로퍼티 파일 로드
       fis.close();//입력 스트림 닫는다.
@@ -82,5 +86,6 @@ public class MFrontController {
             //or session객체에 의해서 저장된 setAttribute(키이름,값)도 각각 유지한다.
          }
       }   
-    }
+   }
+ 
 }

@@ -1,6 +1,8 @@
 package net.daum.service;
 
 import net.daum.dao.MemberDAOImpl;
+import net.daum.dto.MemberDTO;
+import net.daum.dao.*;
 
 public class MemberServiceImpl implements MemberService{
     /*  컨트롤러와 DAO사이에 service를 넣는 이유는
@@ -12,5 +14,10 @@ public class MemberServiceImpl implements MemberService{
     * 
     */
 
+    private MemberDAO mdao = MemberDAOImpl.getInstance();
 
+    @Override
+    public MemberDTO idCheck(String id){
+        return this.mdao.idCheck(id);
+    }
 }

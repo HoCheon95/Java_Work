@@ -2,6 +2,7 @@ package net.daum.dao;
 
 import net.daum.mybatis.config.DBService;
 import org.apache.ibatis.session.SqlSession;
+import net.daum.dto.*;
 
 public class MemberDAOImpl implements MemberDAO{
     /*
@@ -44,5 +45,18 @@ public class MemberDAOImpl implements MemberDAO{
     //DBService.getFactory()를 호출하면 mybatis 쿼리문을 수행할 수 있는 sqlSession 인스턴스 를 생성하게 해주는
     //SqlSessionFactory를 반환한다.
    }//getSqlSession()
+
+   @Override
+   public MemberDTO idCheck(String id){
+    SqlSession sqlSession = null;
+
+    try{
+        sqlSession = getSqlSession();//mybatis쿼리문 수행할 sqlSession 생성
+        return null;
+    }finally{
+        if(sqlSession != null) sqlSession.close();
+    }
+
+   }//idCheck() -> 아이디 중복 검색
 
 }

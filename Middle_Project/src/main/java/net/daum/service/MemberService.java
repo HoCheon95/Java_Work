@@ -1,5 +1,7 @@
 package net.daum.service;
 
-public interface MemberService {
+import net.daum.dto.MemberDTO;
 
+public interface MemberService {
+    MemberDTO idCheck(String id);
 }
