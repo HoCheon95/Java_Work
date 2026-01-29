@@ -67,3 +67,10 @@
 !WeekReport/src/**
 !WeekReport/pom.xml
 !WeekReport/HELP.md
+
+# 9) Servlet_Mvc_OLD 프로젝트 설정 (src와 중요 설정만 포함)
+!Servlet_Mvc_OLD/
+!Servlet_Mvc_OLD/**/
+!Servlet_Mvc_OLD/src/**
+!Servlet_Mvc_OLD/pom.xml
+!Servlet_Mvc_OLD/HELP.md
