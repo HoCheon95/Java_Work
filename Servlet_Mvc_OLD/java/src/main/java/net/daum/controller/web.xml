@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+  <display-name>Servlet_Mvc_OLD</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  
+  <!-- 서블릿 MVC 방명록 저장 매핑주소인 guest_write_ok가 웹주소창에서 실행이될때 작동하는 서블릿 컨트롤러 클래스 설정 -->
+  	<servlet>
+  		<servlet-name>GuestOKController</servlet-name> <!-- 서블릿 컨트롤러 클래스명 -->
+  		<servlet-class>net.daum.controller.GuestOKController</servlet-class>
+  		<!-- 풀패키지 경로 -->
+  	</servlet>
+  	<servlet-mapping>
+  		<servlet-name>GuestOKController</servlet-name>
+  		<url-pattern>/guest_write_ok</url-pattern> <!-- 매핑주소 /guest_write_od 등록 -->
+  	</servlet-mapping>
+</web-app>

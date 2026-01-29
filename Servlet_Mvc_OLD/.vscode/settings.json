@@ -1,0 +1,9 @@
+{
+    "java.project.sourcePaths": [
+        "src/main/java/net/daum/dto",
+        "src/main/java/net/daum/dao",
+        "src/main/java/net/daum/controller",
+        "src/main/java/net/daum",
+        "src/main/java"
+    ]
+}
