@@ -74,3 +74,10 @@
 !Servlet_Mvc_OLD/src/**
 !Servlet_Mvc_OLD/pom.xml
 !Servlet_Mvc_OLD/HELP.md
+
+# 10) Servlet_Mvc_OLD 프로젝트 설정 (src와 중요 설정만 포함)
+!middle_spring/
+!middle_spring/**/
+!middle_spring/src/**
+!middle_spring/pom.xml
+!middle_spring/HELP.md

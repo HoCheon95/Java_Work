@@ -49,4 +49,12 @@
   <select id="zipFind" parameterType="string" resultType="com.example.middle_spring.dto.ZipcodeDTO">
         SELECT * FROM zipcode WHERE dong LIKE #{dong}
     </select>
+
+    <!-- 회원 저장 -->
+    <insert id="m_in" parameterType="com.example.middle_spring.dto.MemberDTO">
+      insert into member (mem_id,mem_pwd,mem_name,mem_zip,mem_zip2,mem_addr,mem_addr2,mem_phone01,
+      mem_phone02,mem_phone03,mail_id,mail_domain,mem_state,mem_date) values(#{mem_id},#{mem_pwd},
+      #{mem_name}, #{mem_zip},#{mem_zip2},#{mem_addr},#{mem_addr2},#{mem_phone01},#{mem_phone02},
+      #{mem_phone03},#{mail_id},#{mail_domain},1,sysdate)
+    </insert>
   </mapper>

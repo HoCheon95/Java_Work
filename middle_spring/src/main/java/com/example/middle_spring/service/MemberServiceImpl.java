@@ -34,4 +34,6 @@ public class MemberServiceImpl implements MemberService{
     public List<ZipcodeDTO> zipFind(String dong) {
         return member_mapper.zipFind(dong); // 매퍼 호출
     }
+
+    
 }

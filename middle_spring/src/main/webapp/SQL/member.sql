@@ -24,8 +24,9 @@ select * from member order by mem_id asc;
 --회원가입 폼에서 아이디 중복 검색 때문에 샘플 회원 저장
 insert into member (mem_id, mem_pwd, mem_name, mem_zip,mem_zip2,MEM_ADDR,MEM_ADDR2, MEM_PHONE01,MEM_PHONE02,
 MEM_PHONE03, MAIL_ID,MAIL_DOMAIN,MEM_DATE,MEM_STATE)
-VALUES('aaaaaa', '77777', '홍길동', '123', '456', '서울시 강남구 테헤란로길', '00빌딩 00호', '010',
+VALUES('ttt', '77777', '홍길동', '123', '456', '서울시 강남구 테헤란로길', '00빌딩 00호', '010',
 '8888','9999','aaaaaa', 'daum.net', sysdate,1);
+COMMIT;
 
 --우편/주소 테이블(zipcode)
 create table zipcode(

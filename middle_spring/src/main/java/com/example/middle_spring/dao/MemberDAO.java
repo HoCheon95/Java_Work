@@ -10,4 +10,7 @@ public interface MemberDAO {
     MemberDTO idCheck(String id);
 
     List<ZipcodeDTO> zipFind(String dong);
+
+    int getMemPwd(MemberDTO dto);
+
 }
