@@ -18,8 +18,8 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	<typeAliases>
 		<!--<typeAlias type="net.daum.dto.BoardDTO" alias="board" />   BoardDTO 빈클래스의 별칭 Alias 추가하면 board.xml에서 
 		parameterType 또는 resultType 속성값을 풀패키지 경로가 아닌 별칭이름으로 간단히 적을 수 있다. -->
-		<!-- <typeAlias type="net.daum.dto.AdminDTO" alias="admin" />
-		<typeAlias type="net.daum.dto.GongjiDTO" alias="gongji" /> -->
+		 <typeAlias type="net.daum.dto.AdminDTO" alias="admin" />
+		<!--<typeAlias type="net.daum.dto.GongjiDTO" alias="gongji" /> -->
 		<typeAlias type="net.daum.dto.MemberDTO" alias="member" />		
 		<typeAlias type="net.daum.dto.ZipcodeDTO" alias="zipcode" />
 	    <!-- <typeAlias type="net.daum.dto.BbsDTO" alias="bbs" />
@@ -65,9 +65,9 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	<!-- <mapper resource="net/daum/mappers/mybatis/board.xml" />
 		<mapper resource="net/daum/mappers/mybatis/gongji.xml" /> -->
 		<mapper resource="net/daum/mappers/mybatis/member.xml" />
-	  <!-- <mapper resource="net/daum/mappers/mybatis/bbs.xml" /> 
+	  <!-- <mapper resource="net/daum/mappers/mybatis/bbs.xml" /> -->
 	  	<mapper resource="net/daum/mappers/mybatis/admin.xml" />		
-        <mapper resource="net/daum/mappers/mybatis/admin_board.xml" />
+       <!--<mapper resource="net/daum/mappers/mybatis/admin_board.xml" />
 		<mapper resource="net/daum/mappers/mybatis/admin_bbs.xml" />
         <mapper resource="net/daum/mappers/mybatis/admin_gongji.xml" />
         <mapper resource="net/daum/mappers/mybatis/admin_member.xml" /> -->

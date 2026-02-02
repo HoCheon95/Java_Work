@@ -10,4 +10,8 @@ public interface MemberService {
 
     List<ZipcodeDTO> zipFind(String dong);
 
+    MemberDTO loginCheck(String id);
+
+    MemberDTO getMember(String id);
+
 }

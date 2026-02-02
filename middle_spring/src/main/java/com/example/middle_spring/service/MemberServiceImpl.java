@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 // import com.example.middle_spring.dao.MemberDAO;
 // import com.example.middle_spring.dao.MemberDAOImpl;
@@ -24,16 +25,24 @@ public class MemberServiceImpl implements MemberService{
     @Autowired
     private memberMapper member_mapper; // 매퍼 주입
     // private MemberDAO mdao = MemberDAOImpl.getInstance();
-
+    @Transactional // 수정 작업 시 DB에 확정(Commit)을 짓도록 설정
     @Override
     public MemberDTO idCheck(String id) {
-        return member_mapper.idCheck(id); // 매퍼 호출
+        return member_mapper.idCheck(id); 
     }
 
     @Override
     public List<ZipcodeDTO> zipFind(String dong) {
-        return member_mapper.zipFind(dong); // 매퍼 호출
+        return member_mapper.zipFind(dong); 
     }
 
-    
+    @Override
+    public MemberDTO loginCheck(String id) {
+        return member_mapper.loginCheck(id);
+    }
+
+    @Override
+    public MemberDTO getMember(String id) {
+        return member_mapper.getMember(id);
+    }
 }

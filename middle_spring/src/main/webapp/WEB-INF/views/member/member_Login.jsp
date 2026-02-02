@@ -20,6 +20,15 @@ Jakarta EE 기반 (Tomcat 10 이상)
 jQuery CDN 방식이란, jQuery 라이브러리 파일을 본인의 컴퓨터 서버에 직접 다운로드하여 저장하지 않고, 온라인 인터넷 연결된 상태에서 구글(Google)이나 
 마이크로소프트(Microsoft) 등에서 제공하는 외부 서버의 경로(URL)를 연결하여 사용하는 방식이다.
 CDN은 Content Delivery Network의 약자로, 전 세계 곳곳에 서버를 두어 사용자와 가장 가까운 서버에서 파일을 빠르게 전달해 주는 시스템을 의미한다. --%>
+<script type="text/javascript">
+    // ${msg}는 RedirectAttributes에 담긴 값을 가져옵니다.
+    var message = "${msg}"; 
+    
+    // 2. 메시지가 존재할 때만 alert창을 띄웁니다.
+    if (message != "" && message != null) {
+        alert(message);
+    }
+</script>
 <script>
  function login_check(){
     if($.trim($("#login_id").val())==""){

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.middle_spring.service.MemberService;
 import com.example.middle_spring.dto.ZipcodeDTO;
+import com.example.middle_spring.mappers.memberMapper;
 import com.example.middle_spring.dto.Zipcode2DTO;
 
 @Controller
@@ -21,13 +22,13 @@ public class ZipFindOKController {
 
     
     @Autowired
-    private MemberService memberService; // 서비스 주입
+    private memberMapper memberMapper; // 서비스 주입
 
     @RequestMapping("/zip_find_ok.do")
     public String zip_find_ok(@RequestParam("dong") String dong, Model model) {
         // 1. 입력받은 동 이름 가공 및 검색
         String searchDong = dong.trim();
-        List<ZipcodeDTO> zlist = memberService.zipFind(searchDong);
+        List<ZipcodeDTO> zlist = memberMapper.zipFind(searchDong);
         
         // 2. 검색 결과 가공 (ZipcodeDTO -> Zipcode2DTO)
         List<Zipcode2DTO> zlist2 = new ArrayList<>();

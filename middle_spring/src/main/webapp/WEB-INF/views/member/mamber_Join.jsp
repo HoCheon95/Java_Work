@@ -9,6 +9,15 @@
 <link rel="stylesheet" type="text/css" href="./css/member.css" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="./js/member.js"></script>
+<script type="text/javascript">
+    // ${msg}는 RedirectAttributes에 담긴 값을 가져옵니다.
+    var message = "${msg}"; 
+    
+    // 2. 메시지가 존재할 때만 alert창을 띄웁니다.
+    if (message != "" && message != null) {
+        alert(message);
+    }
+</script>
 </head>
 <body>
    <div id="mJoin_wrap">

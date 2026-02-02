@@ -2,6 +2,7 @@ package com.example.middle_spring.controller;
 
 import com.example.middle_spring.service.*;
 import com.example.middle_spring.dto.*;
+import com.example.middle_spring.mappers.memberMapper;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -42,13 +43,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class MemberIDCheckController {
 
     @Autowired
-    private MemberService memberService;
+    private memberMapper memberMapper;
 
     @PostMapping("/member_idcheck.do")  
     @ResponseBody
     public int postMethodName(@RequestParam("id") String id) {
         System.out.println("idCheck 컨트롤러 도착: " + id);
-      MemberDTO db_id = memberService.idCheck(id);
+      MemberDTO db_id = memberMapper.idCheck(id);
 
         int re = -1;
         if (db_id != null) {
