@@ -1,10 +1,13 @@
 package com.example.middle_spring.mappers;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
 import com.example.middle_spring.dto.AdminDTO;
+import com.example.middle_spring.dto.MemberDTO;
 
 @Mapper
 public interface admin {
@@ -16,4 +19,22 @@ public interface admin {
     /* 관리자 로그인 인증 */
     @Select("select * from admin where admin_id=#{admin_id}")
     AdminDTO adminLogin(String admin_id);
+
+    /* 관리자 회원관리 검색전 총회원수 또는 검색후 회원수 */
+    @Select("SELECT count(mem_id) FROM member " +
+            "WHERE (CASE WHEN #{find_field} = 'mem_id' THEN mem_id " +
+            "            WHEN #{find_field} = 'mem_name' THEN mem_name " +
+            "            ELSE '1' END) LIKE #{find_name}")//count() 오라클 함수는 레코드 개수를 반환
+    int getMemberCount(MemberDTO findB);
+
+    /* 관리자 회원관리 검색전 총회원목록 또는 검색후 회원목록 */
+    @Select("SELECT * FROM " +
+            "  (SELECT rowNum rNum, mem_id, mem_name, mem_phone01, mem_phone02, mem_phone03, mem_state, mem_date " +
+            "   FROM (SELECT * FROM member " +
+            "         WHERE (CASE WHEN #{find_field} = 'mem_id' THEN mem_id " +
+            "                     WHEN #{find_field} = 'mem_name' THEN mem_name " +
+            "                     ELSE '1' END) LIKE #{find_name} " +
+            "         ORDER BY mem_id ASC)) " +
+            "WHERE rNum >= #{startrow} AND rNum <= #{endrow}")
+    List<MemberDTO> getMemberList(MemberDTO findB);
 }

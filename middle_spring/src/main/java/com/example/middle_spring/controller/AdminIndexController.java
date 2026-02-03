@@ -8,7 +8,9 @@ import jakarta.servlet.http.HttpSession;
 
 
 /* 관리자 로그인 인증 후 관리자 메인화면으로 이동하는 컨트롤러 */
-@Controller
+@Controller 
+// 해당 클래스를 Spring의 컨트롤러 객체로 자동 등록하며, 사용자 요청(URL)을 받아
+//화면(View)을 연결해 주는 입구 역할을 한다.
 public class AdminIndexController {
 
     @RequestMapping("admin_index.do")
