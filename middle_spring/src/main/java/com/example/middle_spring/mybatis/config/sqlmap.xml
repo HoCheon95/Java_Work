@@ -69,8 +69,8 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	  	<mapper resource="net/daum/mappers/mybatis/admin.xml" />		
        <!--<mapper resource="net/daum/mappers/mybatis/admin_board.xml" />
 		<mapper resource="net/daum/mappers/mybatis/admin_bbs.xml" />
-        <mapper resource="net/daum/mappers/mybatis/admin_gongji.xml" />
-        <mapper resource="net/daum/mappers/mybatis/admin_member.xml" /> -->
+        <mapper resource="net/daum/mappers/mybatis/admin_gongji.xml" />-->
+        <mapper resource="net/daum/mappers/mybatis/admin_member.xml" /> 
 	</mappers>
 
 </configuration>

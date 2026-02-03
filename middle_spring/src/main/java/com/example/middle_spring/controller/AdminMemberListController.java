@@ -25,8 +25,8 @@ public class AdminMemberListController {
             HttpSession session, 
             RedirectAttributes rttr, 
             @RequestParam(value = "page", defaultValue = "1") int page,
-            @RequestParam("find_name") String find_name,
-            @RequestParam("find_field") String find_field,
+            @RequestParam(value="find_name", defaultValue = "") String find_name,
+            @RequestParam(value="find_field", defaultValue = "") String find_field,
             Model model) {
 
         String admin_id = (String)session.getAttribute("admin_id");
@@ -36,7 +36,7 @@ public class AdminMemberListController {
             return "redirect:/admin_login.do";
         } else {
             /* 1. 검색 및 기본 설정 */
-            int limit = 7; // 한 페이지에 보여지는 목록 개수
+            int limit = 10; // 한 페이지에 보여지는 목록 개수
             
             MemberDTO findB = new MemberDTO();
             findB.setFind_field(find_field);
