@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.middle_spring.dto.AdminDTO;
-import com.example.middle_spring.mappers.admin;
+import com.example.middle_spring.mappers.adminMapper;
 import com.example.middle_spring.pwdconv.PwdChange;
 
 import jakarta.servlet.http.HttpSession;
@@ -16,7 +16,7 @@ import jakarta.servlet.http.HttpSession;
 public class AdminLoginOKController {
 
     @Autowired
-    private admin adminMapper;
+    private adminMapper adminMapper;
 
     @PostMapping("/admin_login_ok.do")
     public String admin_login(

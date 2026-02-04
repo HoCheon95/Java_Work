@@ -10,7 +10,7 @@ import com.example.middle_spring.dto.AdminDTO;
 import com.example.middle_spring.dto.MemberDTO;
 
 @Mapper
-public interface admin {
+public interface adminMapper {
 
     /* 관리자 정보 저장 */
     @Insert("insert into admin values(#{admin_no}, #{admin_id}, #{admin_pwd}, #{admin_name}, sysdate)")
