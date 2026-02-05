@@ -59,7 +59,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 
 	<!-- 쿼리를 정의하는 매퍼 파일 내용이 들어가는 xml이 위치한 경로를 지정하는 곳 -->
 	<!-- mappers 태그에는 SQL 코드 담고 있는 mybatis XML 매퍼 태그 파일이 있는 경로를  지정 -->
-	<mappers>ㄴ
+	<mappers>
 
 		<!-- <mapper resource="net/daum/mappers/mybatis/board.xml" />
 		<mapper resource="net/daum/mappers/mybatis/gongji.xml" /> -->
