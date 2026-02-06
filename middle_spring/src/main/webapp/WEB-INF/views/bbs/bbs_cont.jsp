@@ -44,7 +44,7 @@
 			<input type="button" value="삭제"
 				onclick="location='bbs_cont.do?bbs_no=${b.bbs_no}&page=${page}&state=del';" />
 			<input type="button" value="목록"
-				onclick="location='bbs_list.do?page=${page}';" />
+				onclick="location='admin_bbs_list.do?page=${page}';" />
 		</div>
 	</div>
 </body>

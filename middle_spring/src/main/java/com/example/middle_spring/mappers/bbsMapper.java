@@ -2,6 +2,7 @@ package com.example.middle_spring.mappers;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
@@ -76,4 +77,42 @@ public interface bbsMapper {
     /* 4. 파일 정보 조회 (컨트롤러에서 사용 중) */
     @Select("SELECT * FROM tbl_newbbs_file WHERE bbs_no=#{bbs_no}")
     List < FileDTO > getFileInfo(int bbs_no);
+
+    /* 5. 답변글 출력 순서 재설정 */
+    /*
+    답변을 달면 원래 그 자리에 있던 다른 답변글들은 아래로 한 칸씩 내려가야 한다.
+    그래서 같은 그룹(ref) 안에서, 현재 답변보다 밑에 있어야 할 글들의 순서 번호(level)를 모두 
+    +1씩 더해서 뒤로 밀어내는 과정
+     */
+    @Update("UPDATE tbl_newbbs SET bbs_level=bbs_level+1 WHERE bbs_ref=#{bbs_ref} and bbs_level > #{bbs_level}")
+    void updateReplyStep(BbsDTO bbsdata);
+
+    /* 6. 답변글 레코드 삽입 */
+    /*
+    위의 작업으로 자리가 비워졌으니, 답변을 저장
+    작성된 답변 데이터를 테이브렝 저장
+    bbs_ref: 원본글과 같은 번호를 써서 한 가족임을 표시
+    bbs_step: 원본글보다 한 칸 더 오른쪽으로 들여쓰기 위해 +1 사용
+    bbs_level: 원본글 바로 다음 줄에 나오게 하기 위해 +1 사용
+     */
+    @Insert("INSERT INTO tbl_newbbs (bbs_no, bbs_name, bbs_title, bbs_pwd, bbs_cont, bbs_ref, bbs_step, bbs_level, bbs_date) VALUES(newbbs_no_seq.nextval, #{bbs_name}, #{bbs_title}, #{bbs_pwd}, #{bbs_cont}, #{bbs_ref}, #{bbs_step}+1, #{bbs_level}+1, sysdate)")
+    void insertReply(BbsDTO bbsdata);
+
+    /* 7. 자료실 번호를 기준으로 글쓴이, 글제목, 글내용만 수정*/
+    @Update("update tbl_newbbs set bbs_name=#{bbs_name}, bbs_title=#{bbs_title}, bbs_cont=#{bbs_cont} where bbs_no=#{bbs_no}")
+    void editBbs(BbsDTO bbsdata);
+
+    /* 8. 번호를 기준으로 tbl_newbbs_file테이블로 부터 기존 첨부파일목록 정보를 삭제한다. */
+    @Delete("delete from tbl_newbbs_file where bbs_no=#{bbs_no}")
+    void delFileList(int bbs_no);
+
+    // 9. 게시물 번호로 게시물 정보(비밀번호 포함) 가져오기
+    @Select("select * from tbl_newbbs where bbs_no = #{bbs_no}")
+    BbsDTO getBbsCont2(int bbs_no);
+
+    // 10. 게시물 본문 삭제
+    @Delete("delete from tbl_newbbs where bbs_no=#{bbs_no}")
+    void bbsDelete(int bbs_no);
+
+
 }

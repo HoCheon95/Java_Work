@@ -19,7 +19,7 @@ public class BbsListController {
     @Autowired
     private bbsMapper bbsMapper;
 
-    @RequestMapping("/bbs_list.do")
+    @RequestMapping("/admin_bbs_list.do")
     public String bbsList(
         @RequestParam(value = "page", defaultValue = "1") int page,
         @RequestParam(value = "find_name", defaultValue = "") String find_name,

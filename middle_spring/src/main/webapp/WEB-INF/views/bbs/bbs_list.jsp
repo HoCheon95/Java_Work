@@ -38,7 +38,7 @@
 									<c:forEach begin="1" end="${b.bbs_step}" step="1">
       &nbsp;<%--답변글 들여쓰기 --%>
 									</c:forEach>
-									<img src="./images/AnswerLine.gif" />
+									<img src="./images/bbs/AnswerLine.gif" />
 									<%--답변글 이미지 --%>
 								</c:if> <a href="bbs_cont.do?bbs_no=${b.bbs_no}&state=cont&page=${page}">${b.bbs_title}</a>
 							</td>
